@@ -24,7 +24,9 @@ print(delimiter * 5)
 import math
 radius = 5
 print(4/3 * math.pi * radius ** 3)
-
+"""
+#3
+"""
 price = 24.95
 first_shipping = 3
 additional = 0.75
@@ -32,6 +34,7 @@ copies = 60
 total_cost = (((price * 0.60) + first_shipping + (copies - 1) * additional) * copies)
 print(total_cost)
 """
+#3
 """
 import datetime
 leave_time_hours = 6
