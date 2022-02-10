@@ -16,12 +16,34 @@ print(W, X, Y, Z)
 """
 
 #Q2
-n = 50
-p = 2
-c = 1
+"""
+n = 100
+p = 1
+c = 2
 
+while c * 2 <= n:
+    c *= 2
+    p += 1
 
-while n <= (p * (p * c) or n >= (p * (p * (c + 1)))):
-    c = c + 1
+print(f'The highest power of 2 <= {n} is {p}')
+"""
 
-print(f'The highest power of 2 <= {n} is {c}')
+#Q3
+all_temp = []
+all_w_speed = []
+all_chill = []
+for w_speed in range(5, 61, 5):
+    all_w_speed.append(f'{w_speed:>3}')
+    for temp in range(40, -46, -5):
+        chill = round(35.74 + (0.6215 * temp) - (35.75 * (w_speed ** 0.16)) + (0.4275 * temp * (w_speed ** 0.16)))
+        all_chill.append(f'{chill:>3}')
+        if len(all_temp) < 18:
+            all_temp.append(f'{temp:>3}')
+
+print('                                       ','Temperature oF')
+print('          Calm',*all_temp, '\n', sep=" ")
+for row in range(12):
+    if row == 5:
+        print('Wind(mph)', all_w_speed[row], '', *all_chill[row * 18:(row + 1) * 18], sep=" ")
+    else:
+        print('         ',all_w_speed[row],'', *all_chill[row*18:(row+1)*18], sep=" ")
