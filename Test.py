@@ -1,2 +1,2 @@
-x = 10
-print(f'{x:>.2f}')
+a = 10
+print(a % 2)
