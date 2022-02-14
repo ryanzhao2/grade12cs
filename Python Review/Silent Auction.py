@@ -11,6 +11,5 @@ def calculate_auction():
             highest_bid = bid_amount
             highest_bid_name = bid_name
     return highest_bid_name
-
 get_bid = calculate_auction()
 print(get_bid)

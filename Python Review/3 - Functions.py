@@ -69,26 +69,64 @@
 #
 # is_multiple(12, 7)
 
+#Q1
 # def right_justify(s, n):
 #     space = ((n - (len(s))) * ' ')
 #     print(space + s)
 #
 # right_justify('allen', 20)
 
-def b(z):
- prod = a(z, z)
- print(z, prod)
- return prod
+#Q2
+# def b(z):
+#  prod = a(z, z)
+#  print(z, prod)
+#  return prod
+#
+# def a(x, y):
+#  x = x + 1
+#  return x * y
+#
+# def c(x, y, z):
+#  sum = x + y + z
+#  pow = b(sum)**2
+#  return pow
+#
+# x = 1
+# y = x + 1
+# print(c(x, y+3, x+y))
+# #returns 90 x 90 which is 8100
 
-def a(x, y):
- x = x + 1
- return x * y
+#Q3
+# def isDigit(str):
+#  new_str = ''
+#  numbers = '123456789'
+#  for i in range(len(str)):
+#   if str[i] in numbers:
+#    new_str += str[i]
+#  if len(new_str) == len(str):
+#   return True
+#  else:
+#   return False
+#
+# print(isDigit('.12'))
+#
+# def isFloat(str):
+#  new_str = ''
+#  float_values = '123456789.'
+#  for i in range(len(str)):
+#   if str[i] in float_values:
+#    new_str += str[i]
+#  if len(new_str) == len(str) and '.' in str:
+#   return True
+#  else:
+#   return False
+#
+# print(isFloat('.12'))
+#
+# print(isinstance(.12, float))
 
-def c(x, y, z):
- sum = x + y + z
- pow = b(sum)**2
- return pow
+#Q4
+def isLeapYear(someYear):
+ return someYear % 4 == 0 and someYear % 100 != 0 or someYear % 400 == 0
 
-x = 1
-y = x + 1
-print(c(x, y+3, x+y))
+print(isLeapYear(400))
