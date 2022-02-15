@@ -20,3 +20,11 @@
 #     return False
 #
 # print(has_duplicates([1, 1]))
+
+#Q6
+import random
+random_list = []
+counts = [0,0,0,0,0,0,0,0,0,0]
+for i in range(50):
+    random_list.append(random.random())
+print(random_list)
