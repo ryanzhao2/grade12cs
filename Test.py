@@ -7,18 +7,71 @@
 
 #print(ord('u'))
 
-fruits = 'banana'
+# fruits = 'banana'
+#
+# if "ba2132131" in fruits:
+#   print("yes")
+#
+# def sum13(nums):
+#   sum_list = []
+#   for i in range(len(nums)):
+#     if i == 0 and nums[0] != 13:
+#       sum_list.append(nums[i])
+#     elif nums[i] != 13 and nums[i-1] != 13:
+#       sum_list.append(nums[i])
+#   return sum(sum_list)
+#
+# print(sum13([2,2,2,2,2,13,10,13,10,10]))
 
-if "ba2132131" in fruits:
-  print("yes")
+dict = {'One': 1, 'Two': 2, 'Three': 3}
 
-def sum13(nums):
-  sum_list = []
-  for i in range(len(nums)):
-    if i == 0 and nums[0] != 13:
-      sum_list.append(nums[i])
-    elif nums[i] != 13 and nums[i-1] != 13:
-      sum_list.append(nums[i])
-  return sum(sum_list)
+dict[" "] = ""
 
-print(sum13([2,2,2,2,2,13,10,13,10,10]))
+print(dict)
+def reverse_dictionary(some_dict):
+    reverse_dict = {}
+
+    for key in some_dict.keys():
+        reverse_dict[some_dict[key]] = key
+        print(some_dict)
+        print(some_dict[key])
+    return reverse_dict
+
+print(reverse_dictionary(dict))
+
+import string
+
+
+def count_word_frequency(some_text):
+    all_words = some_text.split()
+
+    word_frequency_dict = {}
+
+    for word in all_words:
+
+        for symbol in string.punctuation:
+            word = word.replace(symbol, "")
+
+        if word not in word_frequency_dict:
+            word_frequency_dict[word] = 1
+        else:
+            word_frequency_dict[word] += 1
+
+    return word_frequency_dict
+
+
+#MAIN
+
+text = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris diam lacus, gravida in faucibus vitae, scelerisque ac libero. Donec eu risus elementum, luctus purus sit amet, hendrerit diam. Vestibulum eu odio iaculis nibh interdum consectetur non ac ex. Fusce eget faucibus nisl. Aliquam eu leo mi. Proin et laoreet ex, a molestie justo. Etiam odio sapien, facilisis aliquam sem vel, aliquet tempor nisl. Morbi at orci vestibulum, iaculis quam fermentum, vestibulum mi. Sed dapibus ipsum eget faucibus porta.\
+Vestibulum cursus, neque vitae commodo rutrum, augue tellus placerat lectus, sit amet iaculis massa diam a diam. Sed quis dolor maximus, pulvinar neque eget, hendrerit dui. Etiam sapien dolor, malesuada vel dui ac, vehicula cursus dui. Integer facilisis nisi quis diam gravida, sed semper libero mattis. Proin sollicitudin vehicula tortor eu suscipit. Cras ultrices feugiat tortor rutrum scelerisque. Suspendisse eget vulputate ex, ut vulputate leo. Nullam a justo fringilla, blandit lectus sit amet, tincidunt dolor. Proin efficitur vehicula leo et gravida.\
+Nulla egestas sapien quis odio hendrerit gravida. Suspendisse interdum ex sed sapien fermentum consequat. In ante orci, aliquam in diam at, semper ultrices tellus. Sed nec pharetra erat. Nulla ac suscipit ligula, aliquam commodo ipsum. Etiam tempor finibus euismod. Aliquam vehicula odio arcu, quis ornare dui fringilla pretium. Curabitur quis ligula non eros rutrum placerat. Morbi dapibus tempus facilisis. Sed lobortis faucibus pellentesque. Donec nec ante dui. Lorem ipsum dolor sit amet, consectetur adipiscing elit.\
+Nullam at blandit enim. Vestibulum ullamcorper pharetra tellus id lobortis. Sed non lacinia justo. Nulla tincidunt diam lectus, a molestie nisi mollis eget. Sed quis pretium sapien. Etiam ultricies risus a arcu facilisis volutpat. Pellentesque eget nisi sed lorem vehicula laoreet. Nunc et sem porta, hendrerit diam nec, imperdiet lorem. Sed tincidunt ullamcorper risus, eu lobortis leo porttitor eu. Sed lectus nisi, vehicula non vehicula interdum, venenatis aliquet tortor. Lorem ipsum dolor sit amet, consectetur adipiscing elit. In purus lorem, facilisis sit amet diam at, hendrerit ornare libero. Quisque pharetra feugiat justo ut imperdiet. Suspendisse ac pulvinar nunc, in convallis mauris. Ut faucibus nunc at metus congue placerat. Praesent ac dolor ac tortor bibendum placerat sed sit amet ipsum.\
+Nunc porta enim a condimentum bibendum. In elit justo, placerat at neque nec, auctor placerat magna. Nulla bibendum nunc a risus vestibulum, eu elementum lacus sollicitudin. Sed suscipit convallis scelerisque. Nam eget scelerisque magna, quis lacinia diam. Nam ut lorem lobortis, dignissim urna convallis, laoreet sem. Suspendisse eget enim mattis, interdum justo a, egestas risus. Nulla nec magna ut risus auctor porttitor vitae eget nisi. Aenean massa eros, imperdiet eget finibus at, imperdiet blandit odio. Nam id condimentum lectus."
+
+word_count_dict = count_word_frequency(text)
+
+for key in sorted(word_count_dict):
+    print(key, word_count_dict[key])
+
+
+
