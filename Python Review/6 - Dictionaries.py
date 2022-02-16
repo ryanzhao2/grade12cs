@@ -77,3 +77,54 @@
 #     else:
 #         code_str += ' '
 # print(code_str)
+
+# #Q5
+# price_list = [3.98, 0.97, 2.97, 3.99, 3.98, 1.98, 3.98, 1.98, 1.98, 3.98, 2.98,
+#               2.99, 3.97, 0.97, 1.99, 0.98, 0.97, 3.99, 2.99, 3.97, 3.99, 0.98,
+#               3.97, 1.98, 2.99, 1.97, 2.98, 1.97, 0.98, 2.97, 3.97, 0.99, 1.97,
+#               2.97, 2.99, 1.98, 0.98, 1.98, 1.97, 1.98, 2.99, 1.97, 0.98, 0.97,
+#               1.99, 3.97, 2.99, 0.99, 3.98, 3.97, 3.97, 1.99, 3.97, 3.98, 1.98,
+#               2.99, 2.97, 3.97, 3.99, 3.98, 3.99, 2.97, 0.97, 0.99, 1.97, 0.97,
+#               2.99, 3.99, 0.99, 2.97, 0.98, 3.97, 1.99, 0.99, 1.97, 0.97, 0.97,
+#               2.99, 0.99, 0.97, 3.97, 1.99, 2.98, 3.97, 3.99]
+# item_list = ['advil', 'aspirin', 'antacids', 'antibiotic ointment', 'anti-bacerial toweletters',
+#              'automotive repair kits', 'baking tin', 'bandages', 'bandannas', 'baking soda', 'lighters',
+#              'boxed food', 'bungee cords', 'cable ties', 'camping fuel', 'candles', 'canned fruits',
+#              'canned meat', 'canned veggies', 'can openers', 'car towels', 'chewing gum', 'clothesline',
+#              'coffee filters', 'combs', 'compact mirror', 'condiments', 'cotton balls', 'cokkie tins',
+#              'cough drops', 'cutting boards', 'dental floss', 'digital thermometer', 'dish towels',
+#              'dog food', 'duct tape', 'drop cloth', 'ear plugs', 'elastic hair bands',
+#              'emergency cell phone chargers', 'epsom salts', 'eyeglass repair kit', 'facial tissues',
+#              'gauze', 'gardening globes', 'hard candies', 'hydrogen peroxide', 'hand sanitizer',
+#              'jarred foods', 'instant ice packs', 'knives', 'latex dishwashing gloves', 'lip balms',
+#              'lotions', 'magnifying glass', 'matches', 'mesh laundry bag', 'nails', 'screws',
+#              'plastic shoe container', 'rubbing alcohol', 'safety pins', 'salt with iodine',
+#              'scrub buddies', 'sewing kit', 'shoe laces', 'soaps', 'socks', 'solar lights',
+#              'spices', 'stell wool', 'sponges', 'sugar', 'super glue', 'sun hat', 'toothbrushes',
+#              'tote bags', 'travel bottles', 'twine', 'utility pail', 'water', 'wet wipes']
+#
+# dict = {}
+# item_price = list(zip(item_list, price_list))
+# for char in item_price:
+#     dict[char[0]] = char[1]
+# print(dict)
+
+#Q6
+d = {}
+list = []
+for i in range(1, 7):
+    for j in range(1,7):
+        tup = (i, j)
+        sum = i + j
+
+        if sum in d:
+            list = []
+            list.append(tup)
+            d[sum] = list
+        else:
+            d[sum] = tup
+        #print(d[sum])
+for char in d.keys():
+    print(char, d[char])
+
+print(f'Length: {len(d)}')
