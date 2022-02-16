@@ -36,3 +36,44 @@
 #
 # month_num = dict[month]
 # print(f'{date[0]}-{month_num}-{year}')
+
+#Q3
+# import string
+#
+# dict = {}
+# for i in string.ascii_lowercase:
+#     unicode = ord(i) + 7
+#     dict[i] = chr(unicode)
+#
+# print(dict['c'])
+
+#Q4
+# morse = {"A" : ".-", "B" : "-...", "C" : "-.-.", "D" : "-..", "E" : ".", "F" :
+#     "..-.", "G" : "--.", "H" : "....", "I" : "..", "J" : ".---", "K" : "-.-", "L" :
+#     ".-..", "M" : "--", "N" : "-.", "O" : "---", "P" : ".--.", "Q" : "--.-", "R" :
+#     ".-.", "S" : "...", "T" : "-", "U" : "..-", "V" : "...-", "W" : ".--", "X" :
+#     "-..-", "Y" : "-.--", "Z" : "--..", "0" : "-----", "1" : ".----", "2" :
+#     "..---", "3" : "...--", "4" : "....-", "5" : ".....", "6" : "-....", "7" :
+#     "--...", "8" : "---..", "9" : "----.", "." : ".-.-.-", "," : "--..--"," " : " "}
+# code = '.... ..- -- .--. - -.--   -.. ..- -- .--. - -.--   ... .- -   --- -.   .-   .-- .- .-.. .-.. .-.-.-\
+#   .... ..- -- .--. - -.--   -.. ..- -- .--. - -.--   .... .- -..   .-   --. .-. . .- -   ..-. .- .-.. .-.. .-.-.-\
+#   .- .-.. .-..   - .... .   -.- .. -. --. ...   .... --- .-. ... . ...   .- -. -..   .- .-.. .-..   - .... .   -.- .. -. --. ...   -- . -. .-.-.-\
+#   -.-. --- ..- .-.. -.. -. -   .--. ..- -   .... ..- -- .--. - -.--   - --- --. . - .... . .-.   .- --. .- .. -. .-.-.-'
+# def reverse_dictionary(some_dict):
+#     reverse_dict = {}
+#
+#     for key in some_dict.keys():
+#         reverse_dict[some_dict[key]] = key
+#     return reverse_dict
+#
+# reverse_morse = reverse_dictionary(morse)
+# split_code = code.split(" ")
+# print(split_code)
+#
+# code_str = ''
+# for char in split_code:
+#     if char != '':
+#         code_str +=reverse_morse[char]
+#     else:
+#         code_str += ' '
+# print(code_str)
