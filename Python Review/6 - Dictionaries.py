@@ -110,21 +110,42 @@
 # print(dict)
 
 #Q6
+# d = {}
+# for i in range(1, 7):
+#     for j in range(1,7):
+#         tup = (i, j)
+#         sum = i + j
+#         list = []
+#         list.append(tup)
+#         d[1] = list
+#
+# for char in d.keys():
+#     print(char, d[char])
+#
+# print(f'Length: {len(d)}')
+
+#######################################################################
+#############  Working code for list of list ##########################
+#######################################################################
 d = {}
-list = []
+main_list = []
+### create 12 seperate list inside of main_list
+for i in range(12):
+    main_list.append([])
+
+######add the tuple to each of the 12 lists above
 for i in range(1, 7):
     for j in range(1,7):
         tup = (i, j)
         sum = i + j
+        main_list[sum - 2].append(tup)   #### NOTE: sum -2, because main_list index starts from 0
 
-        if sum in d:
-            list = []
-            list.append(tup)
-            d[sum] = list
-        else:
-            d[sum] = tup
-        #print(d[sum])
+#### save the data in each list to individual dictionary
+for i in range(2, 13):
+    d[i] = main_list[i - 2]
+
 for char in d.keys():
     print(char, d[char])
 
 print(f'Length: {len(d)}')
+####################### the END ###################

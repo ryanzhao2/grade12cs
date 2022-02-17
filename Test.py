@@ -28,16 +28,16 @@
 # dict[" "] = ""
 #
 # print(dict)
-def reverse_dictionary(some_dict):
-    reverse_dict = {}
-
-    for key in some_dict.keys():
-        reverse_dict[some_dict[key]] = key
-        print(some_dict)
-        print(some_dict[key])
-    return reverse_dict
-
-print(reverse_dictionary(dict))
+# def reverse_dictionary(some_dict):
+#     reverse_dict = {}
+#
+#     for key in some_dict.keys():
+#         reverse_dict[some_dict[key]] = key
+#         print(some_dict)
+#         print(some_dict[key])
+#     return reverse_dict
+#
+# print(reverse_dictionary(dict))
 #
 # import string
 #
@@ -74,4 +74,16 @@ print(reverse_dictionary(dict))
 #     print(key, word_count_dict[key])
 #
 #
+a = 7
+print(a % 2)
 
+import math
+
+r = 5
+
+print(f'Arc length in a circle with radius {r} units')
+
+for degree in range(30, 360, 30):
+   arc = (degree / 360) * (2 * math.pi * r)
+
+   print(f'{r:>6} units {degree:>7} degree {arc:>10.2f} units')
