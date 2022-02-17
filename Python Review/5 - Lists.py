@@ -22,9 +22,17 @@
 # print(has_duplicates([1, 1]))
 
 #Q6
-import random
-random_list = []
-counts = [0,0,0,0,0,0,0,0,0,0]
-for i in range(50):
-    random_list.append(random.random())
-print(random_list)
+# import random
+# u = []
+# counts = [0,0,0,0,0,0,0,0,0,0]
+# loop_num = 1000
+# for i in range(loop_num):
+#     u.append(random.randint(0, 9))
+#
+# for num in u:
+#     counts[num] += 1
+#
+# for char in counts:
+#     print(f'{char/loop_num*100:>.1f}%')
+#
+
