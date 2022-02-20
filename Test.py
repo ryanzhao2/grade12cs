@@ -73,17 +73,87 @@
 # for key in sorted(word_count_dict):
 #     print(key, word_count_dict[key])
 #
+# #
+# a = 7
+# print(a % 2)
 #
-a = 7
-print(a % 2)
+# import math
+#
+# r = 5
+#
+# print(f'Arc length in a circle with radius {r} units')
+#
+# for degree in range(30, 360, 30):
+#    arc = (degree / 360) * (2 * math.pi * r)
+#
+#    print(f'{r:>6} units {degree:>7} degree {arc:>10.2f} units')
+# dict = {'red': 1}
+# print(dict)
+#
+# dict['red'] = 2
+# print(dict)
+# list = [1, 5.0, '8']
+# print(list)
+#
+# list2 = list
+# list2.append(100)
+# print(list)
+# list3 = list.copy()
+# list3.append(500)
+# print(list3.index(500))
+#
+# def change(mylist):
+#     mylist.append('hong')
+#
+#
+# change(list3)
+# print(list3[::-1])
+#
+#
+#
+import string
 
-import math
+str = "123456"
+print(str.index('5'))
+print(str.strip('15'))
 
-r = 5
+str2 = str.strip('15')
 
-print(f'Arc length in a circle with radius {r} units')
+# Python3 program for demonstration
+# of index() method
 
-for degree in range(30, 360, 30):
-   arc = (degree / 360) * (2 * math.pi * r)
+list1 = [1, 2, 3, 4, 1, 1, 1, 4, 5]
 
-   print(f'{r:>6} units {degree:>7} degree {arc:>10.2f} units')
+# Will print index of '4' in sublist
+# having index from 4 to 8.
+print(list1.index(4, 3, 8))
+
+def reverse_word(str):
+    new_str = ''
+    for i in range(len(str)-1, -1, -1):
+        new_str += str[i]
+    return new_str
+
+print(reverse_word('hello'))
+
+def password(str):
+    first = False
+    second = False
+    third = False
+    a = string.ascii_lowercase
+    b = string.ascii_uppercase
+    num = '0123456789'
+    for i in range(len(str)):
+        if str[i] in a:
+            first = True
+        elif str[i] in b:
+            second = True
+        elif str[i] in num:
+            third = True
+    return first and second and third
+
+print(password('Yishui$01'))
+
+
+for i  in range (4, 2, 4):
+    print (i)
