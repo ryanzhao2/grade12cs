@@ -112,48 +112,51 @@
 #
 #
 import string
-
-str = "123456"
+#
+str = "\n\n\n\t\t\t\t   12     3456"
 print(str.index('5'))
-print(str.strip('15'))
+print(str.strip())
 
 str2 = str.strip('15')
-
-# Python3 program for demonstration
-# of index() method
-
-list1 = [1, 2, 3, 4, 1, 1, 1, 4, 5]
+#
+# # Python3 program for demonstration
+# # of index() method
+#
+# list1 = [1, 2, 3, 4, 1, 1, 1, 4, 5]
 
 # Will print index of '4' in sublist
 # having index from 4 to 8.
-print(list1.index(4, 3, 8))
+# print(list1.index(4, 3, 8))
+#
+# def reverse_word(str):
+#     new_str = ''
+#     for i in range(len(str)-1, -1, -1):
+#         new_str += str[i]
+#     return new_str
+#
+# print(reverse_word('hello'))
+#
+# def password(str):
+#     first = False
+#     second = False
+#     third = False
+#     a = string.ascii_lowercase
+#     b = string.ascii_uppercase
+#     num = '0123456789'
+#     for i in range(len(str)):
+#         if str[i] in a:
+#             first = True
+#         elif str[i] in b:
+#             second = True
+#         elif str[i] in num:
+#             third = True
+#     return first and second and third
+#
+# print(password('Yishui$01'))
+#
+#
+# for i  in range (4, 2, 4):
+#     print (i)
 
-def reverse_word(str):
-    new_str = ''
-    for i in range(len(str)-1, -1, -1):
-        new_str += str[i]
-    return new_str
-
-print(reverse_word('hello'))
-
-def password(str):
-    first = False
-    second = False
-    third = False
-    a = string.ascii_lowercase
-    b = string.ascii_uppercase
-    num = '0123456789'
-    for i in range(len(str)):
-        if str[i] in a:
-            first = True
-        elif str[i] in b:
-            second = True
-        elif str[i] in num:
-            third = True
-    return first and second and third
-
-print(password('Yishui$01'))
-
-
-for i  in range (4, 2, 4):
-    print (i)
+a = 'asdsad   sasdsad'
+print(a.strip('a'))
