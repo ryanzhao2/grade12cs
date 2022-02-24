@@ -64,7 +64,7 @@
 #     for i in range(len(str)):
 #         numeric_code = ord(str[i])
 #         new_character = chr(numeric_code+rotation)
-#         new_str = new_str + new_character
+#         new_str += new_character
 #     return new_str
 #
 # print(rotate_word('melon', -10))

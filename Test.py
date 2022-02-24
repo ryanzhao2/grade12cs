@@ -158,5 +158,7 @@ str2 = str.strip('15')
 # for i  in range (4, 2, 4):
 #     print (i)
 
-a = 'asdsad   sasdsad'
-print(a.strip('a'))
+# a = 'asdsad   sasdsad'
+# print(a.strip('a'))
+a = '123456'
+print(a[-3:])

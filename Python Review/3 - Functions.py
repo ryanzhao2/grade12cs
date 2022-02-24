@@ -70,11 +70,11 @@
 # is_multiple(12, 7)
 
 #Q1
-# def right_justify(s, n):
-#     space = ((n - (len(s))) * ' ')
-#     print(space + s)
-#
-# right_justify('allen', 20)
+def right_justify(s, n):
+    space = ((n - (len(s))) * ' ')
+    print(space + s)
+
+right_justify('allen', 20)
 
 #Q2
 # def b(z):
@@ -97,36 +97,36 @@
 # #returns 90 x 90 which is 8100
 
 #Q3
-# def isDigit(str):
-#  new_str = ''
-#  numbers = '123456789'
-#  for i in range(len(str)):
-#   if str[i] in numbers:
-#    new_str += str[i]
-#  if len(new_str) == len(str):
-#   return True
-#  else:
-#   return False
-#
-# print(isDigit('.12'))
-#
-# def isFloat(str):
-#  new_str = ''
-#  float_values = '123456789.'
-#  for i in range(len(str)):
-#   if str[i] in float_values:
-#    new_str += str[i]
-#  if len(new_str) == len(str) and '.' in str:
-#   return True
-#  else:
-#   return False
-#
-# print(isFloat('.12'))
-#
-# print(isinstance(.12, float))
+def isDigit(str):
+ new_str = ''
+ numbers = '123456789'
+ for i in range(len(str)):
+  if str[i] in numbers:
+   new_str += str[i]
+ if len(new_str) == len(str):
+  return True
+ else:
+  return False
+
+print(isDigit('.12'))
+
+def isFloat(str):
+ new_str = ''
+ float_values = '123456789.'
+ for i in range(len(str)):
+  if str[i] in float_values:
+   new_str += str[i]
+ if len(new_str) == len(str) and '.' in str:
+  return True
+ else:
+  return False
+
+print(isFloat('.12'))
+
+print(isinstance(.12, float))
 
 #Q4
 def isLeapYear(someYear):
  return someYear % 4 == 0 and someYear % 100 != 0 or someYear % 400 == 0
 
-print(isLeapYear(400))
+print(isLeapYear(1990))

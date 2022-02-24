@@ -19,7 +19,8 @@
 #             new_list.append(a_list[i])
 #     return False
 #
-# print(has_duplicates([1, 1]))
+# print(has_duplicates([1, 2, 3, 4, 5, 2]))
+#
 
 #Q6
 # import random

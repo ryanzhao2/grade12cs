@@ -1,32 +1,34 @@
 #Q1
-"""
-W = 10
-X = 2
-Y = -1
-Z = 25
-while not W < X < Y < Z:
-    if W > X:
-        W,X = X,W
-    if X > Y:
-        X,Y = Y,X
-    if Y > Z:
-        Y,Z = Z,Y
+#
+# W = 10
+# X = 2
+# Y = -1
+# Z = 25
+# while not W < X < Y < Z:
+#     if W > X:
+#         W,X = X,W
+#     if X > Y:
+#         X,Y = Y,X
+#     if Y > Z:
+#         Y,Z = Z,Y
+#     print(W, X, Y, Z)
+#
+# print(W, X, Y, Z)
 
-print(W, X, Y, Z)
-"""
 
 #Q2
-"""
-n = 100
-p = 1
-c = 2
+#
+# n = 100
+# p = 1
+# c = 2
+#
+# while c * 2 <= n:
+#     c *= 2
+#     p += 1
+#     print(c)
+#
+# print(f'The highest power of 2 <= {n} is {p}')
 
-while c * 2 <= n:
-    c *= 2
-    p += 1
-
-print(f'The highest power of 2 <= {n} is {p}')
-"""
 
 #Q3
 all_temp = []
