@@ -59,6 +59,8 @@
 # b = a[5].split(',')
 # print(a)
 # print(b)
-import linecache
+#import linecache
 
+dict = {'1': '5123', '2': '12321432', '3': '645'}
+print(dict['1'])
 
