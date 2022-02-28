@@ -13,13 +13,16 @@ def convert_star_datatypes(line):
 def create_star_list(filename):
     '''Return a list of lists. Each list is a star from given file.'''
     star_list = []
-
+    stars = create_named_star_list("stars.txt")
+    for char in stars:
+        star_list.append((stars[char]))
     return star_list
 
 
 def create_named_star_list(filename):
     '''Return a dictionary of lists. Each unique star name is key to star data as list.'''
     with open(filename) as star_file:
+        star_file.readline()
         named_stars_dict = {}
         for line in star_file:
             line = line.split(' ',6)
@@ -29,13 +32,39 @@ def create_named_star_list(filename):
 
                 for n in names:
                     named_stars_dict[n.strip()] = data
-
+        #print(named_stars_dict)
         return named_stars_dict
 
 
 def create_constellations(filename):
-    '''Return a dictionary of lists. Each unique constellation name is key to list of constellation star pairs.'''
+    numbers = '0123456789'
+    count = 0
+    loop_count = 0
     constellations = {}
+    main_list = []
+    name_list = []
+
+    with open(filename) as constellations_file:
+        all_lines = constellations_file.readlines()
+        for line in all_lines:
+            mini_list = []
+            count += 1
+            if ',' not in line and line[0] not in numbers:
+                name_list.append(line.strip())
+            elif line[0] in numbers:
+                iterator = int(line)
+                data = all_lines[count:count+iterator]
+                for i in range(len(data)):
+                    data[i] = data[i].strip().split(',')
+                    tup = (data[i][0], data[i][1])
+                    mini_list.append(tup)
+                main_list.append(mini_list)
+        name_list.remove('')
+    for i in range(len(main_list)):
+        constellations[name_list[loop_count]] = main_list[i]
+        if loop_count < 7:
+            loop_count += 1
+    print(constellations)
 
     return constellations
 

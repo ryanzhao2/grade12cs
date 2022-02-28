@@ -54,8 +54,11 @@
 #         print(a)
 #     print(poem_file.readline())
 
-str = '1,2,3,4,5'
-a = str.split(',', 5)
-b = a[5].split(',')
-print(a)
-print(b)
+# str = '1,2,3,4,5'
+# a = str.split(',', 5)
+# b = a[5].split(',')
+# print(a)
+# print(b)
+import linecache
+
+
