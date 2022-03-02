@@ -113,11 +113,11 @@
 #
 import string
 #
-str = "\n\n\n\t\t\t\t   12     3456"
-print(str.index('5'))
-print(str.strip())
-
-str2 = str.strip('15')
+# str = "\n\n\n\t\t\t\t   12     3456"
+# print(str.index('5'))
+# print(str.strip())
+#
+# str2 = str.strip('15')
 #
 # # Python3 program for demonstration
 # # of index() method
@@ -164,15 +164,22 @@ str2 = str.strip('15')
 # print(a[-3:])
 #
 # print(type(a) == int)
-tup = (1,2,3,4)
-list = ['BENETNASCH,MIZAR', '12334324']
-print(tuple(list))
-print(tup)
-data = ['BENETNASCH,MIZAR', 'MERAK,DUBHE']
-tup = tuple(data)
-print(tup)
-for i in range(len(data)):
-    tup = tuple(data[i])
-    #data[i] = data[i]#, #'()'
-print(tup)
-#print(new_list)
+# tup = (1,2,3,4)
+# list = ['BENETNASCH,MIZAR', '12334324']
+# print(tuple(list))
+# print(tup)
+# data = ['BENETNASCH,MIZAR', 'MERAK,DUBHE']
+# tup = tuple(data)
+# print(tup)
+# for i in range(len(data)):
+#     tup = tuple(data[i])
+#     #data[i] = data[i]#, #'()'
+# print(tup)
+# #print(new_list)
+
+#[:] makes a copy of the list
+list = [1,2,3,4,5]
+a = list[0:]
+list.append('hi')
+print(list)
+print(a)
