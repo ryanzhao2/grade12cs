@@ -7,12 +7,12 @@ def create_kerala_districts(filename):
         info = file_in.readline().strip().split(',')
         reader = csv.reader(file_in)
         for line in reader:
-           if line[0] == 'Kasaragode':
-               line[0] = 'Kasaragod'
-           kerala_flood_info[line[0]] = {}
-           for i in range(1, 7):
-             kerala_flood_info[line[0]][info[i]] = line[i]
-           kerala_flood_info[line[0]]['warnings'] = []
+            #print(line[0])
+            line[0] = line[0].replace('Kasaragode', 'Kasaragod')
+            kerala_flood_info[line[0]] = {}
+            for i in range(1, 7):
+                kerala_flood_info[line[0]][info[i]] = line[i]
+            kerala_flood_info[line[0]]['warnings'] = []
         #print(kerala_flood_info)
         return kerala_flood_info
 
