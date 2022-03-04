@@ -60,7 +60,27 @@
 # print(a)
 # print(b)
 #import linecache
+#
+# dict = {'1': '5123', '2': '12321432', '3': '645'}
+# print(dict['1'])
 
-dict = {'1': '5123', '2': '12321432', '3': '645'}
-print(dict['1'])
+def create_constellations(filename):
+    numbers = '0123456789'
+    constellations = {}
+    list = []
+    with open(filename, 'r') as constellations_file:
+        for line in constellations_file:
+            if ',' not in line and line not in numbers:
+                const_name = line.strip()
+                list = []
+            if line.strip() in numbers:
+                iterator = line.strip()
+                constellations_file.readline()
+                for i in range(int(iterator)):
+                    list.append(constellations_file.readline().strip())
+            constellations[const_name] = list
 
+
+    return constellations
+
+print(create_constellations('constellations.txt'))
