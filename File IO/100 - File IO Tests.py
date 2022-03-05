@@ -65,22 +65,18 @@
 # print(dict['1'])
 
 def create_constellations(filename):
-    numbers = '0123456789'
     constellations = {}
-    list = []
     with open(filename, 'r') as constellations_file:
-        for line in constellations_file:
-            if ',' not in line and line not in numbers:
-                const_name = line.strip()
-                list = []
-            if line.strip() in numbers:
-                iterator = line.strip()
-                constellations_file.readline()
-                for i in range(int(iterator)):
-                    list.append(constellations_file.readline().strip())
+        for i in range(8):
+            list = []
+            const_name = constellations_file.readline().strip()
+            num = constellations_file.readline().strip()
+            for i in range(int(num)):
+                data = constellations_file.readline().strip().split(',')
+                tup = (data[0], data[1])
+                list.append(tup)
             constellations[const_name] = list
 
-
-    return constellations
+        return constellations
 
 print(create_constellations('constellations.txt'))
