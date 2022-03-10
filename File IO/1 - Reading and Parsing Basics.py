@@ -45,9 +45,9 @@
 # print(not_valid)
 
 #Q3
-# str = ''
-# with open('contra.txt') as poem_file:
-#     for line in poem_file:
-#         print(line)
-#         str += line[10]
-# print(str)
+str = ''
+with open('contra.txt') as poem_file:
+    for line in poem_file:
+        #print(line)
+        str += line[10]
+print(str)

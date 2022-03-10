@@ -1,21 +1,26 @@
 with open('university_programs.txt') as universities_file:
+    main_list = []
     for line in universities_file:
-        line = line.strip().split(', ')
-        new_list = []
-        #print(line[0].split())
-        format_name = line[0].split()
-        if format_name[0] not in 'University':
-            new_list.append(format_name[0])
-        elif format_name[0] in 'University':
-            new_list.append(format_name[2])
-        a = line[1].strip()
-        new_list.append(a)
-        b = line[2].strip().split(':  ')
-        new_list.append(b[0])
-        new_list.append(b[1])
-        for i in range(3, len(line)):
-            new_list.append(line[i].strip())
-        new_list = ("[{}]".format(",".join(map(repr, new_list))))
-        print(new_list)
+        list = []
+        strip_list = line.strip().split(', ')
+        uni_name = strip_list[0].strip(' ')
+        first_part = uni_name.split(' ')
+        province = strip_list[2].split(':')
+        province = province[0]
+        province = province.replace(' ', '', 1)
+        city = strip_list[1]
+        city = city.replace(' ', '', 1)
+        if first_part[0] != 'University':
+            list.append(first_part[0])
+        else:
+            list.append(uni_name)
+        list.append(city)
+        list.append(province)
+        list.append(strip_list[3])
+        main_list.append(list)
+    for char in main_list:
+        print(char)
+
+
 
 

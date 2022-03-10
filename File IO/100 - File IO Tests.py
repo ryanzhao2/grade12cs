@@ -80,3 +80,15 @@ def create_constellations(filename):
         return constellations
 
 print(create_constellations('constellations.txt'))
+
+import csv
+def display_pokemon(filename):
+    with open(filename, 'w') as test_file:
+        writer = csv.writer(test_file)
+        data = ['1', '2', '3']
+        writer.writerow(data)
+        writer.writerow(data)
+        writer.writerow(data)
+
+
+display_pokemon('tests.txt')
