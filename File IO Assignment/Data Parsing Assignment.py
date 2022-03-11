@@ -8,25 +8,24 @@ month_after = {'January': 0, 'February': 1, 'March': 2, 'April': 3, 'May': 4, 'J
 #index 7 is actual movie release date
 
 def calculate_date_difference(app_release, actual_release):
-    list = []
     if app_release[0] != 'unknown':
-        months = month_after[app_release[0]]
+        month_to_days = 30 * month_after[app_release[0]]
     else:
-        months = 'unknown'
+        month_to_days = 'unknown'
     if app_release[1] != 'unknown':
         days = int(app_release[1].replace(',', ''))
     else:
         days = 'unknown'
     if app_release[2].isdigit():
         years = int(app_release[2]) - int(actual_release)
+        years_to_days = 365 * years
     else:
-        years = 'unknown'
-    list.append(days)
-    list.append(months)
-    list.append(years)
-    return list
+        years_to_days = 'unknown'
+    total = month_to_days + days + years_to_days
+    return total
 
 def netflix_app(file):
+    count = 0
     with open(file, 'r', encoding='utf-8') as netflix:
         dict = {}
         netflix.readline()
@@ -35,6 +34,8 @@ def netflix_app(file):
             movie_or_show = line[1]
             title = line[2]
             app_rel = line[6].split()
+            if len(app_rel) != 0:
+                count += 1
             if len(app_rel) == 0:
                 for i in range(3):
                     app_rel.append('unknown')
@@ -43,10 +44,11 @@ def netflix_app(file):
             dict[title] = []
             dict[title].append(movie_or_show)
             dict[title].append(difference)
-
-        return dict
+        print(count)
+        #return dict
 
 def amazon_prime(file):
+    count = 0
     with open(file, 'r', encoding='utf-8') as amazon:
         dict = {}
         amazon.readline()
@@ -55,6 +57,8 @@ def amazon_prime(file):
             movie_or_show = line[1]
             title = line[2]
             app_rel = line[6].split()
+            if len(app_rel) != 0:
+                count += 1
             if len(app_rel) == 0:
                 for i in range(3):
                     app_rel.append('unknown')
@@ -63,11 +67,12 @@ def amazon_prime(file):
             dict[title] = []
             dict[title].append(movie_or_show)
             dict[title].append(difference)
-
-        return dict
+        print(count)
+        #return dict
 
 
 def disney_plus(file):
+    count = 0
     with open(file, 'r', encoding='utf-8') as disney:
         dict = {}
         disney.readline()
@@ -76,6 +81,8 @@ def disney_plus(file):
             movie_or_show = line[1]
             title = line[2]
             app_rel = line[6].split()
+            if len(app_rel) != 0:
+                count += 1
             if len(app_rel) == 0:
                 for i in range(3):
                     app_rel.append('unknown')
@@ -85,9 +92,11 @@ def disney_plus(file):
             dict[title].append(movie_or_show)
             dict[title].append(difference)
 
-        return dict
+        print(count)
+        #return dict
 
 def hulu_app(file):
+    count = 0
     with open(file, 'r', encoding='utf-8') as hulu:
         dict = {}
         hulu.readline()
@@ -96,6 +105,8 @@ def hulu_app(file):
             movie_or_show = line[1]
             title = line[2]
             app_rel = line[6].split()
+            if len(app_rel) != 0:
+                count += 1
             if len(app_rel) == 0:
                 for i in range(3):
                     app_rel.append('unknown')
@@ -104,12 +115,28 @@ def hulu_app(file):
             dict[title] = []
             dict[title].append(movie_or_show)
             dict[title].append(difference)
-
+        print(count)
+        print(dict)
         return dict
+
+def ranges(netflix, amazon, disney, hulu):
+    zero_ten = {}
+    eleven_thirty = {}
+    thirty_90 = {}
+    ninety_one_eighty = {}
+    one_eighty_to_year = {}
+    over_year = {}
+    for char in netflix:
+        netflix_date = netflix[char]
+        amazon_date = amazon[char]
+
+        if char in amazon:
+            pass
+
 
 netflix_movies = netflix_app('netflix_titles.csv')
 amazon_movies = amazon_prime('amazon_prime_titles.csv')
 disney_plus_movies = disney_plus('disney_plus_titles.csv')
 hulu_movies = hulu_app('hulu_titles.csv')
 
-print(amazon_movies)
+#print(amazon_movies)
