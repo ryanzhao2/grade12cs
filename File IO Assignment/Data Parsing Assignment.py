@@ -27,7 +27,7 @@ def calculate_date_difference(app_release, actual_release):
     return list
 
 def netflix_app(file):
-    with open(file, 'r') as netflix:
+    with open(file, 'r', encoding='utf-8') as netflix:
         dict = {}
         netflix.readline()
         reader = csv.reader(netflix)
@@ -47,7 +47,7 @@ def netflix_app(file):
         return dict
 
 def amazon_prime(file):
-    with open(file, 'r') as amazon:
+    with open(file, 'r', encoding='utf-8') as amazon:
         dict = {}
         amazon.readline()
         reader = csv.reader(amazon)
@@ -68,7 +68,7 @@ def amazon_prime(file):
 
 
 def disney_plus(file):
-    with open(file, 'r') as disney:
+    with open(file, 'r', encoding='utf-8') as disney:
         dict = {}
         disney.readline()
         reader = csv.reader(disney)
@@ -88,7 +88,7 @@ def disney_plus(file):
         return dict
 
 def hulu_app(file):
-    with open(file, 'r') as hulu:
+    with open(file, 'r', encoding='utf-8') as hulu:
         dict = {}
         hulu.readline()
         reader = csv.reader(hulu)

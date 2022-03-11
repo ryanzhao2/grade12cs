@@ -183,18 +183,17 @@ import string
 # list.append('hi')
 # print(list)
 # print(a)
-# def factorial( n ):
-#  if n > 1:
-#     result = n * factorial(n - 1)
-#     return result
-#  else:
-#     return 1
-# print(factorial(6))
+def factorial( n ):
+    print('a',n)
+    result = n * factorial(n - 1)
+    return result
+
+print(factorial(6))
 # dict = {1: '2', 2: '3', 3: '4'}
 # for char in dict:
 #     print(char)
 # print(len(dict))
 
-string = '1, 2, 3, 4, 5, 6'
-a = string.split(', ', 4)
-print(a)
+# string = '1, 2, 3, 4, 5, 6'
+# a = string.split(', ', 4)
+# print(a)
