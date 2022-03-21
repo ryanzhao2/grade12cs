@@ -1,29 +1,7 @@
 #CHAPTER 6 THINK LKE A COMPUTER SCIENTIST
 
 # #2
-# def day_name(num):
-#     day = ''
-#     if num == 0:
-#         day = 'Sunday'
-#     elif num == 1:
-#         day = 'Monday'
-#     elif num == 2:
-#         day = 'Tuesday'
-#     elif num == 3:
-#         day = 'Wednesday'
-#     elif num == 4:
-#         day = 'Thursday'
-#     elif num == 5:
-#         day = 'Friday'
-#     elif num == 6:
-#         day = 'Saturday'
-#     else:
-#         print(None)
-#     print(day)
-#
-# day_name(10)
-#
-# #6
+
 #
 # def days_in_month(month):
 #     days = ''
