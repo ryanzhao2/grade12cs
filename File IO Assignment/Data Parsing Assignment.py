@@ -4,22 +4,19 @@ from datetime import date
 column_list = [6, 7, 3, 5, 8, 9]
 month_after = {'January': 1, 'February': 2, 'March': 3, 'April': 4, 'May': 5, 'June': 6,
                 'July': 7, 'August': 8, 'September': 9, 'October': 10, 'November': 11, 'December': 12}
-#index 1 is the type of film(movie or show)
-#index 2 is the title
-#index 6 is release on app date
-#index 7 is actual movie release date
+
 def dict_ranges():
-    All_Ranges = {'negative': {'Movie': {}, 'TV Show': {}}, '0_10': {'Movie': {}, 'TV Show': {}},
+    the_ranges_dict = {'released after netflix': {'Movie': {}, 'TV Show': {}}, '0_10': {'Movie': {}, 'TV Show': {}},
                 '11_30': {'Movie': {}, 'TV Show': {}}, '31_90': {'Movie': {}, 'TV Show': {}},
                 '91_180': {'Movie': {}, 'TV Show': {}}, '181_365': {'Movie': {}, 'TV Show': {}},
                 '365+': {'Movie': {}, 'TV Show': {}}, 'unknown': {'Movie': {}, 'TV Show': {}}}
-    for ranges in All_Ranges:
-        for type in All_Ranges[ranges]:
-            if 'amazon' not in All_Ranges[ranges][type]:
-                All_Ranges[ranges][type]['amazon'] = []
-                All_Ranges[ranges][type]['disney'] = []
-                All_Ranges[ranges][type]['hulu'] = []
-    return All_Ranges
+    for ranges in the_ranges_dict:
+        for type in the_ranges_dict[ranges]:
+            if 'amazon' not in the_ranges_dict[ranges][type]:
+                the_ranges_dict[ranges][type]['amazon'] = []
+                the_ranges_dict[ranges][type]['disney'] = []
+                the_ranges_dict[ranges][type]['hulu'] = []
+    return the_ranges_dict
 
 def calculate_date_difference(app_release, actual_release):
     if app_release[1] != 'unknown' and app_release[0] != 'unknown' and app_release[2] != 'unknown':
@@ -32,11 +29,11 @@ def calculate_date_difference(app_release, actual_release):
         return date_difference.days
     return 'unknown'
 
-def netflix_app(file):
-    with open(file, 'r', encoding='utf-8') as netflix:
+def streaming_programs(file, streaming_app_name):
+    with open(file, 'r', encoding='utf-8') as app:
         dict = {}
-        netflix.readline()
-        reader = csv.reader(netflix)
+        app.readline()
+        reader = csv.reader(app)
         for line in reader:
             movie_or_show = line[1]
             title = line[2]
@@ -52,81 +49,7 @@ def netflix_app(file):
             for char in column_list:
                 dict[title].append(line[char])
             dict[title].append(title)
-            dict[title].append('netflix')
-        return dict
-
-def amazon_prime(file):
-    with open(file, 'r', encoding='utf-8') as amazon:
-        dict = {}
-        amazon.readline()
-        reader = csv.reader(amazon)
-        for line in reader:
-            movie_or_show = line[1]
-            title = line[2]
-            app_rel = line[6].split()
-            if len(app_rel) == 0:
-                for i in range(3):
-                    app_rel.append('unknown')
-            actual_rel = line[7]
-            difference = calculate_date_difference(app_rel, actual_rel)
-            dict[title] = []
-            dict[title].append(movie_or_show)
-            dict[title].append(difference)
-            for char in column_list:
-                dict[title].append(line[char])
-            dict[title].append(title)
-            dict[title].append('amazon')
-        return dict
-
-def disney_plus(file):
-
-    with open(file, 'r', encoding='utf-8') as disney:
-        dict = {}
-        disney.readline()
-        reader = csv.reader(disney)
-        for line in reader:
-            movie_or_show = line[1]
-            title = line[2]
-            app_rel = line[6].split()
-            if len(app_rel) == 0:
-                for i in range(3):
-                    app_rel.append('unknown')
-            actual_rel = line[7]
-            difference = calculate_date_difference(app_rel, actual_rel)
-            dict[title] = []
-            dict[title].append(movie_or_show)
-            dict[title].append(difference)
-            for char in column_list:
-                dict[title].append(line[char])
-            dict[title].append(title)
-            dict[title].append('disney')
-        return dict
-
-def hulu_app(file):
-    count = 0
-    with open(file, 'r', encoding='utf-8') as hulu:
-        dict = {}
-        hulu.readline()
-        reader = csv.reader(hulu)
-        for line in reader:
-            movie_or_show = line[1]
-            title = line[2]
-            app_rel = line[6].split()
-            if len(app_rel) != 0:
-                count += 1
-            if len(app_rel) == 0:
-                for i in range(3):
-                    app_rel.append('unknown')
-            actual_rel = line[7]
-            difference = calculate_date_difference(app_rel, actual_rel)
-            dict[title] = []
-            dict[title].append(movie_or_show)
-            dict[title].append(difference)
-            for char in column_list:
-                dict[title].append(line[char])
-            dict[title].append(title)
-            dict[title].append('hulu')
-        #print(dict)
+            dict[title].append(streaming_app_name)
         return dict
 
 def ranges(netflix, amazon, disney, hulu, all_ranges):
@@ -166,7 +89,7 @@ def ranges(netflix, amazon, disney, hulu, all_ranges):
 
 def calculate_dict_for_ranges(range_dict, content_list, range):
     if '-' in str(range) and range < 0:
-        range_dict['negative'][content_list[0]][content_list[-1]].append(content_list)
+        range_dict['released after netflix'][content_list[0]][content_list[-1]].append(content_list)
     elif str(range).isdigit() and range >= 0 and range <= 10:
         range_dict['0_10'][content_list[0]][content_list[-1]].append(content_list)
     elif str(range).isdigit() and range >= 11 and range <= 30:
@@ -183,10 +106,10 @@ def calculate_dict_for_ranges(range_dict, content_list, range):
         range_dict['unknown'][content_list[0]][content_list[-1]].append(content_list)
     return range_dict
 
-netflix_movies = netflix_app('netflix_titles.csv')
-amazon_movies = amazon_prime('amazon_prime_titles.csv')
-disney_plus_movies = disney_plus('disney_plus_titles.csv')
-hulu_movies = hulu_app('hulu_titles.csv')
+netflix_movies = streaming_programs('netflix_titles.csv', 'netflix')
+amazon_movies = streaming_programs('amazon_prime_titles.csv', 'amazon')
+disney_plus_movies = streaming_programs('disney_plus_titles.csv', 'disney')
+hulu_movies = streaming_programs('hulu_titles.csv', 'hulu')
 all_ranges = dict_ranges()
 final_dict = ranges(netflix_movies, amazon_movies, disney_plus_movies, hulu_movies, all_ranges)
 print(final_dict)
