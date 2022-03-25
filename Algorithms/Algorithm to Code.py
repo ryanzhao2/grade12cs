@@ -15,11 +15,14 @@
 
 def selection_sort(a_list):
     for i in range(len(a_list)-1):
-        min = a_list[i]
-        for j in range(i, len(a_list)-1-i):
-            if a_list[j] < min:
-                min = a_list[j]
-                a_list[i], a_list[j] = a_list[j], a_list[i]
+        index_min = i
+        minimum = a_list[i]
+        for j in range(i, len(a_list)):
+            if a_list[j] < minimum:
+                index_min = j
+                minimum = a_list[j]
+        a_list[i], a_list[index_min] = a_list[index_min], a_list[i]
+
     print(a_list)
-a = [36, 29, 16, 21, 22, 32, 35, 2, 40, 11, 3, 15, 17, 2, 3]
+a = [300, 500, 600, 100, 450023, 36, 29, 16, 21, 22, 32, 35, 2, 40, 11, 3, 15, 17, 2, 3]
 selection_sort(a)
