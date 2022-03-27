@@ -25,4 +25,22 @@ def selection_sort(a_list):
 
     print(a_list)
 a = [300, 500, 600, 100, 450023, 36, 29, 16, 21, 22, 32, 35, 2, 40, 11, 3, 15, 17, 2, 3]
-selection_sort(a)
+#selection_sort(a)
+
+def insertion_sort(a_list):
+    index_sorted = 0
+    for i in range(1, len(a_list)):
+        element = a_list[i]
+        a_list.pop(i)
+        unsorted = i
+        for j in range(index_sorted, -1, -1):
+            if a_list[j] > element:
+                unsorted = j
+            else:
+                break
+        a_list.insert(unsorted, element)
+        index_sorted += 1
+
+    print(a_list)
+b = [100]
+insertion_sort(b)
