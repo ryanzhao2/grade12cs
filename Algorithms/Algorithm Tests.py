@@ -7,3 +7,4 @@ def bubble_sort(list):
                 list[j],list[j+1] = list[j+1],list[j]
                 swapped = True
 print(bubble_sort([5,4,3,2,1]))
+
