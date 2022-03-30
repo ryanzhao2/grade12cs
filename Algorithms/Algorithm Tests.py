@@ -8,3 +8,6 @@ def bubble_sort(list):
                 swapped = True
 print(bubble_sort([5,4,3,2,1]))
 
+a = [0, 1, 2, 3]
+a.insert(-1, 5)
+print(a)

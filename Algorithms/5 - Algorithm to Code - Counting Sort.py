@@ -45,6 +45,7 @@ def new_counting_sort(file):
         for j in range(unique):
             counting_array.append(0)
 
+        print(counting_array)
         for element in all_list:
             index = dict[element]
             counting_array[index] += 1

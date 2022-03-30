@@ -1,28 +1,11 @@
-'''
-Created for ICS4U
-aaronquesnelle
-'''
-
-
 def binary_search(aList, T):
-    '''
-    Returns the index of value T in given list aList.
-    Returns -1 if value T is not found.
-
-    @param
-    aList - list. The list to search within.
-    T - value. The value to search for.
-
-    @return
-    index - int. The index of the value if found in given list, -1 if not found.
-    '''
 
     ##Set L to 0 and R to n − 1.
     L = 0
     R = len(aList) - 1
     m = (L + R) // 2
 
-    while (aList[m] != T):
+    while (L <= R):
         ##If L > R, the search terminates as unsuccessful.
         if (L > R):
             return -1
@@ -42,13 +25,22 @@ def binary_search(aList, T):
             ##Now Am = T, the search is done; return m.
             else:
                 return m
+
+
     return m
 
 
 def insert_binary_search(value, a_list):
-    call_binary = binary_search(value, a_list)
+    call_binary = binary_search(a_list, value)
     minimum = min(a_list)
+    maximum = max(a_list)
     if value < minimum:
-
-
-insert_binary_search()
+        a_list.insert(0, value)
+    elif value > maximum:
+        a_list.insert(len(a_list), value)
+    else:
+        a_list.insert(call_binary, value)
+    print(call_binary)
+    print(a_list)
+a = [3, 4, 4, 6, 8, 10, 14, 14, 14, 14]
+insert_binary_search(12, a)
