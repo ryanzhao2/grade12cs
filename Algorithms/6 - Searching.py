@@ -43,4 +43,4 @@ def insert_binary_search(value, a_list):
     print(call_binary)
     print(a_list)
 a = [3, 4, 4, 6, 8, 10, 14, 14, 14, 14]
-insert_binary_search(12, a)
+insert_binary_search(5, a)
