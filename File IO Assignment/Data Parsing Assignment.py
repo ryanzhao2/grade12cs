@@ -28,8 +28,9 @@ def calculate_date_difference(app_release, actual_release):
     return 'unknown'
 
 
-def adding_app_to_key(the_dictionary_ranges, app_dictionary, netflix_title, world_wide_release, netflix_date_difference,
-                      film_type):
+def netflix_to_app_date_difference(the_dictionary_ranges, app_dictionary, netflix_title, world_wide_release,
+                                   netflix_date_difference,
+                                   film_type):
     if netflix_title in app_dictionary and app_dictionary[netflix_title][3] == world_wide_release and \
             app_dictionary[netflix_title][0] == film_type:
         other_app_date_difference = app_dictionary[netflix_title][1]
@@ -39,7 +40,7 @@ def adding_app_to_key(the_dictionary_ranges, app_dictionary, netflix_title, worl
             rel_dates_between_apps = 'unknown'
         app_dictionary[netflix_title].pop(1)
         app_dictionary[netflix_title].insert(1, rel_dates_between_apps)
-        calculate_dict_for_ranges(the_dictionary_ranges, app_dictionary[netflix_title], rel_dates_between_apps)
+        adding_lists_to_dict(the_dictionary_ranges, app_dictionary[netflix_title], rel_dates_between_apps)
     return the_dictionary_ranges
 
 
@@ -59,12 +60,14 @@ def streaming_programs(the_dictionary_ranges, file, streaming_app_name):
 
             date_difference = calculate_date_difference(app_rel, global_rel)
             if streaming_app_name == 'netflix':
-                adding_app_to_key(the_dictionary_ranges, amazon_movies, title, global_rel, date_difference,
-                                  movie_or_show)
-                adding_app_to_key(the_dictionary_ranges, disney_plus_movies, title, global_rel, date_difference,
-                                  movie_or_show)
-                final_dict = adding_app_to_key(the_dictionary_ranges, hulu_movies, title, global_rel, date_difference,
+                netflix_to_app_date_difference(the_dictionary_ranges, amazon_movies, title, global_rel, date_difference,
                                                movie_or_show)
+                netflix_to_app_date_difference(the_dictionary_ranges, disney_plus_movies, title, global_rel,
+                                               date_difference,
+                                               movie_or_show)
+                final_dict = netflix_to_app_date_difference(the_dictionary_ranges, hulu_movies, title, global_rel,
+                                                            date_difference,
+                                                            movie_or_show)
             else:
                 app_dictionary[title] = []
                 app_dictionary[title].append(movie_or_show)
@@ -78,7 +81,7 @@ def streaming_programs(the_dictionary_ranges, file, streaming_app_name):
         return app_dictionary
 
 
-def calculate_dict_for_ranges(the_dictionary_ranges, content_list, release_date_range):
+def adding_lists_to_dict(the_dictionary_ranges, content_list, release_date_range):
     if '-' in str(release_date_range) and release_date_range < 0:
         the_dictionary_ranges['released after netflix'][content_list[0]][content_list[-1]].append(content_list)
     elif str(release_date_range).isdigit() and release_date_range >= 0 and release_date_range <= 10:
@@ -107,6 +110,6 @@ all_ranges_in_dict = dictionary_of_date_ranges()
 amazon_movies = streaming_programs(all_ranges_in_dict, 'amazon_prime_titles.csv', 'amazon')
 disney_plus_movies = streaming_programs(all_ranges_in_dict, 'disney_plus_titles.csv', 'disney')
 hulu_movies = streaming_programs(all_ranges_in_dict, 'hulu_titles.csv', 'hulu')
-netflix_movies = streaming_programs(all_ranges_in_dict, 'netflix_titles.csv', 'netflix')
+netflix_and_other_app_date_comparison = streaming_programs(all_ranges_in_dict, 'netflix_titles.csv', 'netflix')
 
-print(netflix_movies)
+print(netflix_and_other_app_date_comparison)
