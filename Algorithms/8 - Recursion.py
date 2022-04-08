@@ -12,11 +12,12 @@
 #         return fibonacci(n-1) + fibonacci(n-2)
 #
 #
-# print(fibonacci(4))
-#
-# fib(3) + fib(2)
-# fib(2) + fib(1) + fib(1) + fib(0)
-# fib(1) + fib(0) + fib(1) + fib(1) + fib(0)
+# print(fibonacci(5))
+# fib(5)
+# fib(4) + fib(3)
+# fib(3) + fib(2) + fib(2) + fib(1)
+# fib(2) + fib(1) + fib(1) + fib(0) + fib(1) + fib(0)
+# fib(1) + fib(0)
 
 # Q2	'''
 # 	This method should print the sum of squares from 1 to n
