@@ -3,21 +3,22 @@
 
 # 9 FUNCTION CALLS
 
-# def fibonacci(n):
-#     if n == 1:
-#         return 1
-#     elif n == 2:
-#         return 1
-#     else:
-#         return fibonacci(n-1) + fibonacci(n-2)
+def fibonacci(n):
+    if n == 1 or n == 2:
+        return 1
+    else:
+        return fibonacci(n-1) + fibonacci(n-2)
+
+
+
+print(fibonacci(4))
 #
-#
-# print(fibonacci(5))
-# fib(5)
-# fib(4) + fib(3)
-# fib(3) + fib(2) + fib(2) + fib(1)
-# fib(2) + fib(1) + fib(1) + fib(0) + fib(1) + fib(0)
+
+# fib(3) + fib(2)
+# fib(2) + fib(1) + fib(1) + fib(0)
 # fib(1) + fib(0)
+#0, 1, 1, 2, 3, 5,....
+
 
 # Q2	'''
 # 	This method should print the sum of squares from 1 to n
@@ -75,16 +76,16 @@
 #
 # print(index_list([1, 2, 3, 4, 8, 9, 10, 5], 3))
 #
-def flatten_list(some_list):
-    if len(some_list) == 0:
-        return ''
-    if not isinstance(some_list[0], list):
-        print("me:", str(some_list[0]))
-        return str(some_list[0]) + ' ' + str(flatten_list(some_list[1:]))
-    else:
-        print("me2:", str(some_list[0]))
-        return str(flatten_list(some_list[0])) + str(flatten_list(some_list[1:]))
-
-
-
-print(flatten_list([1, 2, 3, [[0, [7]], 9, [8, 8]], 5, 6, 9 ,10]))
+# def flatten_list(some_list):
+#     if len(some_list) == 0:
+#         return ''
+#     if not isinstance(some_list[0], list):
+#         print("me:", str(some_list[0]))
+#         return str(some_list[0]) + ' ' + str(flatten_list(some_list[1:]))
+#     else:
+#         print("me2:", str(some_list[0]))
+#         return str(flatten_list(some_list[0])) + str(flatten_list(some_list[1:]))
+#
+#
+#
+# print(flatten_list([1, 2, 3, [[0, [7]], 9, [8, 8]], 5, 6, 9 ,10]))
