@@ -8,15 +8,38 @@
 # Return the number of times counted.
 
 #Test Case 1 - Accurate count by generating the random birthday once
-#result = count_birthday_duplicate(September, 27)
-#print(result == 1)
+#result = count_birthday_duplicate('September', 27)
+#print(result >= 1)
 
 #Test Case 2 - Invalid birthday
-#result = count_birthday_duplicate(January, 31)
-#print(result == infinite)
+#result = count_birthday_duplicate('ABC', 31)
+#print(result == 0)
 
-#Test Case 3 -
-# count = 0
-# while 1 != 0:
-#     count += 1
-#     print(count)
+#Test Case 3 - Invalid Day
+#result = count_birthday_duplicate('July', 100)
+#print(result == 0)
+
+def encode_message(message):
+    message = message.strip().upper()
+    message[0], message[-1] = message[-1], message[0]
+    print(message)
+    pass
+
+
+
+#Test Cases
+print('\nTest case 1 - empty string')
+result = encode_message('')
+print(result == '')
+
+print('\nTest case 2 - one character string')
+result = encode_message('A')
+print(result == 'A')
+
+print('\nTest case 3 - one character + spaces')
+result = encode_message('    A     ')
+print(result == 'A')
+
+print('\nTest case 4 - 4 characters and no space')
+result = encode_message('GOLD')
+print(result == 'ODGL')
