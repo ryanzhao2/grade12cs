@@ -20,10 +20,21 @@
 #print(result == 0)
 
 def encode_message(message):
-    message = message.strip().upper()
-    message[0], message[-1] = message[-1], message[0]
-    print(message)
-    pass
+    message = message.strip()
+    if len(message) <= 1:
+        return message.strip()
+    else:
+        message_list = list(message)
+        message_list[0], message_list[-1] = message_list[-1], message_list[0]
+        for i in range(0 , len(message_list)-1, 2):
+            print(i)
+            message_list[i], message_list[i+1] = message_list[i+1], message_list[i]
+
+        x = ''.join(message_list)
+        print(x)
+        return x
+    #print(message)
+
 
 
 
@@ -43,3 +54,7 @@ print(result == 'A')
 print('\nTest case 4 - 4 characters and no space')
 result = encode_message('GOLD')
 print(result == 'ODGL')
+
+print('\nTest case 5 - 3 characters and no space')
+result = encode_message('GOL')
+print(result == 'OLG')
