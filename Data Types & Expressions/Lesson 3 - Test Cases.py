@@ -11,7 +11,7 @@
 #result = count_birthday_duplicate('September', 27)
 #print(result >= 1)
 
-#Test Case 2 - Invalid birthday
+#Test Case 2 - Invalid Month
 #result = count_birthday_duplicate('ABC', 31)
 #print(result == 0)
 
@@ -19,6 +19,9 @@
 #result = count_birthday_duplicate('July', 100)
 #print(result == 0)
 
+#Test Case 4 - Checking for leap year birthday
+#result = count_birthday_duplicate('February', 29)
+#print(result >= 1)
 def encode_message(message):
     message = message.strip()
     if len(message) <= 1:

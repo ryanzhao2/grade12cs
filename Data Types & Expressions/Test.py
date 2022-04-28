@@ -7,8 +7,9 @@ m = m % 0.25
 
 dimes = m // 0.1
 m = m % 0.1
-
+print(m)
 nickels = m // 0.05
 
 m = m % 0.05
 
+print(nickels)
