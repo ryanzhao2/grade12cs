@@ -73,6 +73,7 @@ class Planet:
 
         self.pturtle = turtle.Turtle()
         self.pturtle.up()
+        self.pturtle.shapesize(self._radius/20, self._radius/20, 0)
         self.pturtle.color(self._color)
         self.pturtle.shape("circle")
         self.pturtle.goto(self._x, self._y)
@@ -147,6 +148,15 @@ class Planet:
     def add_moon(self, new_moon):
         self._moon_list.append(new_moon)
 
+    def __gt__(self, other):
+        return self._distance > other.distance()
+
+    def __eq__(self, other):
+        return self._distance == other.distance()
+
+    def __lt__(self, other):
+        return self._distance < other.distance()
+
 
 class SolarSystem:
     def __init__(self, width, height):
@@ -174,7 +184,7 @@ class SolarSystem:
         self._planets.remove(aplanet)
 
     def sort_planets(self):
-        pass
+        return self._planets.sort()
 
     def __str__(self):
         #self._planets.sort()
@@ -213,12 +223,12 @@ class SolarSystem:
 
 
 def createSSandAnimate():
-    ss = SolarSystem(2, 2)
+    ss = SolarSystem(6, 6)
 
     sun = Sun("SUN", 5000, 10, 5800)
     ss.add_sun(sun)
 
-    mercury = Planet("MERCURY", 19.5, 1000, .25, 0, 2, "blue")
+    mercury = Planet("MERCURY", 19.5, 1000, 1, 0, 2, "blue")
     ss.add_planet(mercury)
 
     earth = Planet("EARTH", 47.5, 5000, 0.3, 0, 2.0, "green")
@@ -230,10 +240,18 @@ def createSSandAnimate():
     jupiter = Planet("JUPITER", 100, 49000, 0.7, 0, 2, "black")
     ss.add_planet(jupiter)
 
+    saturn = Planet("SATURN", 58, 14700, 1.4, 3, 6, "purple")
+    ss.add_planet(saturn)
+
+    zhao = Planet("ZHAO", 20, 500, 0.6, 1, 1, "orange")
+    ss.add_planet(zhao)
+
     print("testing mass of ss", ss.total_mass())
     print(len(ss))
     print(ss)
     ss.remove_planet(mars)
+    print(ss)
+    ss.sort_planets()
     print(ss)
 
     num_time_periods = 100000
