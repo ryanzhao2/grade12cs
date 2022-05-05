@@ -311,9 +311,7 @@ class College:
             self._applicants.remove(applicant)
 
     def accept_applications(self):
-        if applicant.average() > 85 and "ENG4C" in applicant.courses() and "MHF4U" in applicant.courses() and "ICS4U" in applicant.courses():
-            self._students.append(applicant)
-
+        self._students.append(self._applicants)
 
 class University:
     def __init__(self, name):
@@ -364,9 +362,9 @@ class University:
         if applicant in self._applicants:
             self._applicants.remove(applicant)
 
-    def accept_applications(self, applicant):
-        if applicant.average() > 85 and "ENG4C" in applicant.courses() and "MHF4U" in applicant.courses() and "ICS4U" in applicant.courses():
-            self._students.append(applicant)
+    def accept_applications(self):
+        self._students.append(self._applicants)
+
 
 
 

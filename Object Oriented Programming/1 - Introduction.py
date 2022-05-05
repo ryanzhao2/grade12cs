@@ -37,9 +37,9 @@ class Planet:
         circumference = self._planet_radius * 2 * math.pi
         return circumference
 
-import Introduction as a
 
-e = a.Planet("earth", "terrestrial", 365, 10, 3)
+
+e = Planet("earth", "terrestrial", 365, 10, 3)
 
 print(e.name())
 print(e.orbit_day())
