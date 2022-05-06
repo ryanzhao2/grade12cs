@@ -23,39 +23,74 @@
 # for p in planet_list:
 #     print(2, p)
 #
+#
+# class Zhao:
+#
+#     def __init__(self, name, age):
+#         self._name = name
+#         self._age = age
+#
+#     def age(self):
+#         return self._age
+#
+#     def __str__(self):
+#         return f'Name: {self._name} Age: {self._age}'
+#
+#     def __repr__(self):
+#         return f'Zhao(Name: {self._name} Age: {self._age})'
+#
+#     def __lt__(self, other):
+#         return self._age < other.age()
+#
+#     def __eq__(self, other):
+#         return self._age == other.age()
+#
+#     def __gt__(self, other):
+#         return self._age > other.age()
+#
+# ryan = Zhao('Ryan', 16)
+# angela = Zhao('Angela', 21)
+# hong = Zhao('hong', 52)
+# jing = Zhao('jing', 52)
+#
+# print(list([ryan, angela, hong, jing]))
+#
+# print(ryan, angela, hong, jing)
+# family_list = [ryan, angela, hong, jing]
+# family_list.sort(reverse=True)
+# print(family_list)
 
-class Zhao:
+class Mousepad:
 
-    def __init__(self, name, age):
-        self._name = name
-        self._age = age
+    def __init__(self, store, brand, price, size):
+        self._store = store
+        self._brand = brand
+        self._price = price
+        self._size = size
 
-    def age(self):
-        return self._age
-
-    def __str__(self):
-        return f'Name: {self._name} Age: {self._age}'
-
-    def __repr__(self):
-        return f'Zhao(Name: {self._name} Age: {self._age})'
+    def size(self):
+        return self._size
 
     def __lt__(self, other):
-        return self._age < other.age()
+        return self._size < other.size()
 
     def __eq__(self, other):
-        return self._age == other.age()
+        return self._size == other.size()
 
     def __gt__(self, other):
-        return self._age > other.age()
+        return self._size > other.size()
 
-ryan = Zhao('Ryan', 16)
-angela = Zhao('Angela', 21)
-hong = Zhao('hong', 52)
-jing = Zhao('jing', 52)
+    def __str__(self):
+        return f'{self._brand}'
 
-print(list([ryan, angela, hong, jing]))
+    def __repr__(self):
+        return f'Mousepad(sorted={self._brand})'
 
-print(ryan, angela, hong, jing)
-family_list = [ryan, angela, hong, jing]
-family_list.sort(reverse=True)
-print(family_list)
+m1 = Mousepad('bestbuy', 'razer', 30, 90)
+m2 = Mousepad('amazon', 'steelseries', 40, 91)
+m3 = Mousepad('walmart', 'nobrand', 10, 50)
+
+print(m1)
+m_list = [m1, m2, m3]
+m_list.sort(reverse=True)
+print(m_list)
