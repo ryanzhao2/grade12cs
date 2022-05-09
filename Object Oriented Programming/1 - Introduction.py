@@ -1,53 +1,53 @@
 import math
-# class Planet:
-#
-#     def __init__(self, name, t, orbit, moons, radius):
-#         self._name = name
-#         self._type = t
-#         self._orbit_days = orbit
-#         self._number_of_moons = moons
-#         self._moon_list = []
-#         self._planet_radius = radius
-#
-#
-#
-#     def name(self):
-#         return self._name
-#
-#     def change_type(self, new):
-#         self._type = new
-#
-#     def orbit_day(self):
-#         return self._orbit_days
-#
-#     def change_orbit_day(self, new):
-#         self._orbit_days = new
-#
-#     def num_moons(self):
-#         return self._number_of_moons
-#
-#     def change_number_moons(self, new):
-#         self._number_of_moons = new
-#
-#     def add_moon(self):
-#         self._moon_list.append(self._name)
-#         return self._moon_list
-#
-#     def calculate_circumference(self):
-#         circumference = self._planet_radius * 2 * math.pi
-#         return circumference
-#
-#
-#
-# e = Planet("earth", "terrestrial", 365, 10, 3)
-#
-# print(e.name())
-# print(e.orbit_day())
-#
-# e.change_orbit_day(366)
-# print(e.orbit_day())
-# print(e.add_moon())
-# print(e.calculate_circumference())
+class Planet:
+
+    def __init__(self, name, t, orbit, moons, radius):
+        self._name = name
+        self._type = t
+        self._orbit_days = orbit
+        self._number_of_moons = moons
+        self._moon_list = []
+        self._planet_radius = radius
+
+
+
+    def name(self):
+        return self._name
+
+    def change_type(self, new):
+        self._type = new
+
+    def orbit_day(self):
+        return self._orbit_days
+
+    def change_orbit_day(self, new):
+        self._orbit_days = new
+
+    def num_moons(self):
+        return self._number_of_moons
+
+    def change_number_moons(self, new):
+        self._number_of_moons = new
+
+    def add_moon(self):
+        self._moon_list.append(self._name)
+        return self._moon_list
+
+    def calculate_circumference(self):
+        circumference = self._planet_radius * 2 * math.pi
+        return circumference
+
+
+
+e = Planet("earth", "terrestrial", 365, 10, 3)
+
+print(e.name())
+print(e.orbit_day())
+
+e.change_orbit_day(366)
+print(e.orbit_day())
+print(e.add_moon())
+print(e.calculate_circumference())
 
 # class Sun:
 #     def __init__(self, name, radius, mass, temperature):
