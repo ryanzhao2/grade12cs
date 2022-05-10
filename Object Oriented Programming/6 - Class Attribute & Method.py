@@ -85,15 +85,13 @@ class Flight:
     # passenger booking information
     @classmethod
     def _generate_seating_plan(cls, rows, seats):
-        dict = {}
         seating_plan = []
         for i in rows:
-            dict[i] = {}
-            for j in range(len(seats)):
-                dict[i][seats[j]] = None
-        seating_plan.append(dict)
-        return dict
-        # print(seating_plan)
+            dict = {}
+            for j in seats:
+                dict[j] = None
+            seating_plan.append(dict)
+        return seating_plan
     @classmethod
     def _check_seat(cls, seat):
         if len(seat) == 2:

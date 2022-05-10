@@ -244,7 +244,7 @@ class Deck:
 
 class Canasta(Deck):
     def __init__(self):
-        self._num_deck = Canasta._generateCards()
+        self._num_deck = Deck._generateCards()
         self._num_deck *= 3
         for i in range(6):
             self._num_deck.append(Card(0, 'joker'))
@@ -284,6 +284,5 @@ class BlackJack(Deck):
 
 
 # print(Canasta())
-print(Euchre())
-# bj = BlackJack()
-# print(bj)
+# print(Euchre())
+# print(BlackJack())
