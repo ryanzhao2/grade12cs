@@ -105,7 +105,6 @@ def game_of_war():
     player1 = Player('1')
     player2 = Player('2')
     player1.add_lots(d.deal_pile(26))
-
     player2.add_lots(d.deal_pile(26))
     pile = []
 
@@ -132,9 +131,9 @@ def game_of_war():
 
             else:
                 player1.add_lots(pile)
-    if len(player1._cards) > 0:
+    if len(player2._cards) == 0:
         print(f'winner p1{player1._cards}')
-    else:
+    elif len(player1._cards) == 0:
         print(f'winner p2{player2._cards}')
 # Application
 def game():
