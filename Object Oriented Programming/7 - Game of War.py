@@ -92,8 +92,9 @@ class Hand(Deck):
 
 class Player(Deck):
     def __init__(self, name):
+        # super().__init__()
         self._name = name
-        self._cards = Deck._generate_cards()
+        self._cards = []
 
 
     def __str__(self):
@@ -137,7 +138,7 @@ def game_of_war():
             else:
                 player1.add_lots(pile)
 
-    if len(player2._cards) == 0:
+    if len(player2) == 0:
         print(f'winner p1{player1._cards}')
         return 'p1'
     if len(player1._cards) == 0:
@@ -151,7 +152,7 @@ def game():
 # game()
 p1count = 0
 p2count = 0
-for i in range(100):
+for i in range(1):
 
     if game_of_war() == 'p1':
         p1count += 1

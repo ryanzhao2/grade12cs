@@ -242,46 +242,46 @@ class Deck:
         return self._cards.pop(0)
 
 
-class Canasta(Deck):
-    def __init__(self):
-        self._num_deck = Deck._generateCards()
-        self._num_deck *= 3
-        for i in range(6):
-            self._num_deck.append(Card(0, 'joker'))
-
-    def __str__(self):
-        return f'{self._num_deck}'
-
-class Euchre(Deck):
-
-    def __init__(self):
-        self._new_deck = []
-        self._num_deck = Euchre._generateCards()
-        for card in self._num_deck:
-
-            if card.value() <= 8 and card.value() >= 2:
-
-                self._new_deck.append(card)
-        for c in self._new_deck:
-            self._num_deck.remove(c)
-
-
-    def __str__(self):
-        return f'{self._num_deck}'
-
-
-
-class BlackJack(Deck):
-
-    def __init__(self):
-
-        self._cards = BlackJack._generateCards() * 8
-        self.shuffle()
-
-    def __str__(self):
-        return f'{self._cards}'
-
-
+# class Canasta(Deck):
+#     def __init__(self):
+#         self._num_deck = Deck._generateCards()
+#         self._num_deck *= 3
+#         for i in range(6):
+#             self._num_deck.append(Card(0, 'joker'))
+#
+#     def __str__(self):
+#         return f'{self._num_deck}'
+#
+# class Euchre(Deck):
+#
+#     def __init__(self):
+#         self._new_deck = []
+#         self._num_deck = Euchre._generateCards()
+#         for card in self._num_deck:
+#
+#             if card.value() <= 8 and card.value() >= 2:
+#
+#                 self._new_deck.append(card)
+#         for c in self._new_deck:
+#             self._num_deck.remove(c)
+#
+#
+#     def __str__(self):
+#         return f'{self._num_deck}'
+#
+#
+#
+# class BlackJack(Deck):
+#
+#     def __init__(self):
+#
+#         self._cards = BlackJack._generateCards() * 8
+#         self.shuffle()
+#
+#     def __str__(self):
+#         return f'{self._cards}'
+#
+#
 
 # print(Canasta())
 # print(Euchre())
