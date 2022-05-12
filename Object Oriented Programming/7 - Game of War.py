@@ -117,7 +117,6 @@ def game_of_war():
 
         pile.append(c1)
         pile.append(c2)
-        print(pile)
         if c1 > c2:
             player1.add_lots(pile)
             pile = []
