@@ -75,6 +75,7 @@ class Deck:
         return False
 
     def deal(self):
+        self.shuffle()
         return self._cards.pop()
 
     def deal_pile(self, num):
@@ -102,8 +103,10 @@ class Player(Deck):
 def game_of_war():
     d = Deck()
     d.shuffle()
-    player1 = Player('1')
-    player2 = Player('2')
+    player1 = Player('player1')
+    player1._cards = []
+    player2 = Player('player2')
+    player2._cards = []
     player1.add_lots(d.deal_pile(26))
     player2.add_lots(d.deal_pile(26))
     pile = []
@@ -111,11 +114,14 @@ def game_of_war():
     while not player1.empty() and not player2.empty():
         c1 = player1.deal()
         c2 = player2.deal()
+
         pile.append(c1)
         pile.append(c2)
+        print(pile)
         if c1 > c2:
             player1.add_lots(pile)
             pile = []
+
 
         elif c2 > c1:
             player2.add_lots(pile)
@@ -131,14 +137,25 @@ def game_of_war():
 
             else:
                 player1.add_lots(pile)
+
     if len(player2._cards) == 0:
         print(f'winner p1{player1._cards}')
-    elif len(player1._cards) == 0:
+        return 'p1'
+    if len(player1._cards) == 0:
         print(f'winner p2{player2._cards}')
+        return 'p2'
 # Application
 def game():
     input("Press any key to continue")
 
 
 # game()
-game_of_war()
+p1count = 0
+p2count = 0
+for i in range(100):
+
+    if game_of_war() == 'p1':
+        p1count += 1
+    else:
+        p2count += 1
+print(p1count, p2count)

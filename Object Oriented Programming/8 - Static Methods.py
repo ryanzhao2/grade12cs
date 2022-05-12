@@ -29,27 +29,38 @@ class Die:
         return self._value == other.value()
 
     def __str__(self):
-        return self._value
+        return f'{self._value}'
 
     def __repr__(self):
-        return self._value
+        return f'{self._value}'
 
 
-class Interface:
+class Interface(Die):
 
     @staticmethod
     def printDice(listDice):
-        return listDice
+        lines = '-'*30
+        text = f'Your current dice are . . .\nDice Number: 1  2  3  4  5\n{lines}\nYour Dice are: {listDice}\n\n'
+        print(text)
 
     @staticmethod
     def whichDiceToKeep():
-        choice = input('Choose a die')
-        return markShouldRoll()
+        a_list = []
+        text = f'Please type in the Dice numbers of the dice you want to keep\
+        \nPlease put a space between your values\nExample:  1 4 5  means \
+you want to keep Dice 1 4 5 and reroll Dice 2 3'
+        print(text)
+        user_choice = (input(f'Dice to keep?'))
+        print('\n')
+        for i in range(len(user_choice)):
+            if user_choice[i] != ' ':
+                a_list.append(int(user_choice[i]))
+        return a_list
+
 
     @staticmethod
     def printScore(result, score):
-        return 2
-
+        print(f'{result}, {score}')
 
 class PokerDiceGame:
 
