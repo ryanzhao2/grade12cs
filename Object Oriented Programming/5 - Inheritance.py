@@ -2,6 +2,9 @@
 # import random
 #
 # class PostSecondary:
+#
+#     _a = '123'
+#
 #     def __init__(self, name):
 #         self._name = name
 #         self._students = []
@@ -73,34 +76,27 @@
 #         return (f'class Student name={self._name}, avg={self._average}, courses={self._courses}')
 #
 #
-# class College(PostSecondary):
 #
+# class College(PostSecondary):
 #     def accept_applications(self):
-#         for student in self._applicants:
-#             c = student.courses()
-#             if student.average() > 80:
-#                 if "ENG4U" in c or "ENG4C" in c and "MHF4U" in c or "MCT4M" in c:
-#                     self._students.append(student)
+#         for applicant in self._applicants:
+#             if 'ENG4U' or 'ENG4C' and 'MHF4U' or 'MCT4M' in applicant.courses():
+#                 if applicant.average() >= 80:
+#                     self._students.append(applicant)
+#     def print(self):
+#         print(College._a)
+#
 #
 # class University(PostSecondary):
 #
-#
 #     def accept_applications(self):
-#         for student in self._applicants:
-#             c = student.courses()
-#             print(student)
-#             if student.average() > 85 and "ENG4U" in c and "MHF4U" in c and "ICS4U" in c:
-#                     self._students.append(student)
-#
+#         for applicant in self._applicants:
+#             if 'ENG4U' and 'MHF4U' and 'ICS4U' in applicant.courses() and applicant.average() >= 85:
+#                 self._students.append(applicant)
 #
 #
 # def generate_random_students():
-#     names = ['Nabeela Gentry', 'Ishika Lutz', 'Sullivan Johnston', 'Rhiannan Lambert', 'Elijah Odling', 'Hanna Salazar',
-#              'Kimora Nicholson', 'Siobhan Samuels', 'Bianka Steadman', 'Sianna Franco', 'Sierra Greaves',
-#              'Ailish Pemberton', 'Katie Luna', 'Jak Garcia', 'Summer-Louise Hughes', 'Riley Hancock', 'Garfield Moss',
-#              'Karishma Hodgson', 'Darren Castaneda', 'Tasneem Dalton', 'Leanne Turner', 'Priyanka Read',
-#              'Mahnoor Paine', 'Savannah Lamb', 'Waseem Wynn', 'Ruben Hartley', 'Izzie Richardson', 'Cem Scott',
-#              'Eren Hood', 'Marc Lane']
+#     names = ['Nabeela Gentry', 'Ishika Lutz', 'Sullivan Johnston', 'Rhiannan Lambert', 'Elijah Odling', 'Hanna Salazar', 'Kimora Nicholson', 'Siobhan Samuels', 'Bianka Steadman', 'Sianna Franco', 'Sierra Greaves', 'Ailish Pemberton', 'Katie Luna', 'Jak Garcia', 'Summer-Louise Hughes', 'Riley Hancock', 'Garfield Moss', 'Karishma Hodgson', 'Darren Castaneda', 'Tasneem Dalton', 'Leanne Turner', 'Priyanka Read', 'Mahnoor Paine', 'Savannah Lamb', 'Waseem Wynn', 'Ruben Hartley', 'Izzie Richardson', 'Cem Scott', 'Eren Hood', 'Marc Lane']
 #     courses = ["MHF4U", "ENG4U", "ICS4U", "MCT4M", "ENG4C", "MDM4U", "EWC4U"]
 #
 #     all_students = []
@@ -123,16 +119,17 @@
 #
 #
 # def load_applicants(institution, list_students):
+#
 #     for current_student in list_students:
 #         institution.add_applicant(current_student)
 #
 #
 # def main():
+#
 #     # imagine that we created even more institutions
 #     guelph_university = University("Guelph")
 #     mohawk_college = College("Mohawk")
 #     all_postsecondary = [guelph_university, mohawk_college]
-#
 #     # generate random students
 #     all_students = generate_random_students()
 #
@@ -140,25 +137,31 @@
 #     for institution in all_postsecondary:
 #         load_applicants(institution, all_students)
 #
+#
 #     for institution in all_postsecondary:
 #         print(f'\n\n{institution.name()}')
 #         print("Applicants are")
-#         print("-" * 30)
+#         print("- " *30)
 #         print(institution.print_applicants())
 #
 #     # perform the acceptance check for applicants
 #     for institution in all_postsecondary:
 #         institution.accept_applications()
 #
+#
 #     for institution in all_postsecondary:
 #         print(f'\n\n{institution.name()}')
 #         print("Acceptances go out to")
-#         print("-" * 30)
+#         print("- " *30)
 #         print(institution.print_students())
+#
 #
 # main()
 
-#
+
+
+
+
 import random
 
 
@@ -242,47 +245,52 @@ class Deck:
         return self._cards.pop(0)
 
 
-# class Canasta(Deck):
-#     def __init__(self):
-#         self._num_deck = Deck._generateCards()
-#         self._num_deck *= 3
-#         for i in range(6):
-#             self._num_deck.append(Card(0, 'joker'))
-#
-#     def __str__(self):
-#         return f'{self._num_deck}'
-#
-# class Euchre(Deck):
-#
-#     def __init__(self):
-#         self._new_deck = []
-#         self._num_deck = Euchre._generateCards()
-#         for card in self._num_deck:
-#
-#             if card.value() <= 8 and card.value() >= 2:
-#
-#                 self._new_deck.append(card)
-#         for c in self._new_deck:
-#             self._num_deck.remove(c)
-#
-#
-#     def __str__(self):
-#         return f'{self._num_deck}'
-#
-#
-#
-# class BlackJack(Deck):
-#
-#     def __init__(self):
-#
-#         self._cards = BlackJack._generateCards() * 8
-#         self.shuffle()
-#
-#     def __str__(self):
-#         return f'{self._cards}'
-#
-#
+class Canasta(Deck):
+    def __init__(self):
+        self._num_deck = Deck._generateCards()
+        self._num_deck *= 3
+        for i in range(6):
+            self._num_deck.append(Card(0, 'joker'))
 
-# print(Canasta())
+    def __str__(self):
+        return f'{self._num_deck}'
+
+class Euchre(Deck):
+
+    def __init__(self):
+        self._new_deck = []
+        self._num_deck = Euchre._generateCards()
+        for card in self._num_deck:
+
+            if card.value() <= 8 and card.value() >= 2:
+
+                self._new_deck.append(card)
+        for c in self._new_deck:
+            self._num_deck.remove(c)
+
+
+    def __str__(self):
+        return f'{self._num_deck}'
+
+
+
+class BlackJack(Deck):
+
+    def __init__(self):
+
+        self._cards = BlackJack._generateCards() * 8
+        self.shuffle()
+
+    def __str__(self):
+        return f'{self._cards}'
+
+# class test(Deck):
+#     def __init__(self):
+#         self._b = self._cards
+#
+#     def __str__(self):
+#         return f'{self._b}'
+# print(test())
+print(Canasta())
 # print(Euchre())
 # print(BlackJack())

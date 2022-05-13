@@ -141,7 +141,7 @@ def game_of_war():
     if len(player2) == 0:
         print(f'winner p1{player1._cards}')
         return 'p1'
-    if len(player1._cards) == 0:
+    if len(player1) == 0:
         print(f'winner p2{player2._cards}')
         return 'p2'
 # Application
