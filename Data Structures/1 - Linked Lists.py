@@ -59,7 +59,7 @@ class LinkedList:
             a = self._firstNode
             self._firstNode = newNode
             self._firstNode.newlink(a)
-
+        self._length += 1
 
         # increase length by 1
 
@@ -204,7 +204,26 @@ class LinkedList:
 
 
     def deleteFirst(self):
-        pass
+
+        # do nothing if list is empty
+        if (self._firstNode != None):
+
+            # if the list has one node, empty list and decrease length
+            if (self._firstNode.link() == None):
+                self._firstNode = None
+                self._length -= 1
+
+            # otherwise the list has two or more nodes
+            else:
+                # initialize pointers to previous and current node
+                x = self._firstNode
+
+                # advance pointers along the list until current points
+                # to last item in list
+
+                # now previous node points to new last node in list
+                # length is decreased
+                self._length -= 1
 
 
 # some_list = LinkedList()

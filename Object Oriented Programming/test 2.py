@@ -30,7 +30,7 @@ c = comic_book(100, 'marvel')
 n = novel(300, 'harry potter')
 print(n.get_title())
 b = book(30, 'wimpy kid')
-print(c._owner)
+print(n._owner)
 print(comic_book.double_price(200))
 book.anything()
 # dict = {'one': 1, 'two': 2, 'three': 3}
