@@ -253,6 +253,20 @@ class LinkedList:
             node = node.link()
         self._length -= 1
 
+    # def reverse(self):
+    #     first = self._firstNode
+    #     current = first
+    #     next = first.link()
+    #     first.newlink(None)
+    #     while next != None:
+    #         a = next.link()
+    #         if a == None:
+    #             self._firstNode.newlink(next)
+    #         next.newlink(current)
+    #         current = next
+    #         next = a
+
+
     def reverse(self):
         first = self._firstNode
         next = first.link()
