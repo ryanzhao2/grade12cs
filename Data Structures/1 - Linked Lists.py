@@ -22,10 +22,11 @@ class ListNode:
         return self._link
 
     def newlink(self, node):
+        #print('node:' , node._value, node.link())
         self._link = node
 
     def __str__(self):
-        return self._value
+        return str(self._value)
 
 
 class LinkedList:
@@ -45,6 +46,7 @@ class LinkedList:
 
     def firstNode(self):
         return self._firstNode
+
 
     def __len__(self):
         return self._length
@@ -215,8 +217,12 @@ class LinkedList:
 
             # otherwise the list has two or more nodes
             else:
-                # initialize pointers to previous and current node
-                x = self._firstNode
+                    # initialize pointers to previous and current node
+                print(self._firstNode)
+
+                self._firstNode = self._firstNode.link()
+
+
 
                 # advance pointers along the list until current points
                 # to last item in list
@@ -224,6 +230,42 @@ class LinkedList:
                 # now previous node points to new last node in list
                 # length is decreased
                 self._length -= 1
+
+    def insertAfter(self, afterValue, newValue):
+        newNode = ListNode(newValue)
+        node = self._firstNode
+        while node != None:
+            if node.value() == afterValue:
+                newNode.newlink(node.link())
+                node.newlink(newNode)
+            node = node.link()
+        self._length += 1
+
+    def remove(self, value):
+        node = self._firstNode
+        if node.value() == value:
+            self._firstNode = self._firstNode.link()
+        while node != None and node.link() != None:
+            b = node
+            if b.link().value() == value:
+                a = node.link()
+                b.newlink(a.link())
+            node = node.link()
+        self._length -= 1
+
+    def reverse(self):
+        first = self._firstNode
+        next = first.link()
+        first.newlink(None)
+        current = first
+        while next != None:
+            a = next.link()
+            if a == None:
+                 self._firstNode = next
+            next.newlink(current)
+            current = next
+
+            next = a
 
 
 # some_list = LinkedList()
@@ -283,31 +325,31 @@ alist.insertNewLastNode(7)
 alist.insertNewLastNode(8)
 alist.insertNewLastNode(12)
 print(alist)
+
+alist.insertAfter(4, 6)
+alist.insertAfter(0, 1)
+alist.insertAfter(12, 15)
+alist.insertAfter(5, 'nope')
+print("\n\n")
+print(alist)
+print("You should see this on the console:  [0, 1, 4, 6, 7, 8, 12, 15]")
+
+
 #
-# alist.insertAfter(4, 6)
-# alist.insertAfter(0, 1)
-# alist.insertAfter(12, 15)
-# alist.insertAfter(5, 'nope')
-# print("\n\n")
-# print(alist)
-# print("You should see this on the console:  [0, 1, 4, 6, 7, 8, 12, 15]")
-#
-#
-#
-# ###TESTING remove function
-# print("\nTESTING REMOVE FUNCTION")
-# alist.remove(6)
-# alist.remove(0)
-# alist.remove(15)
-# alist.remove(5)
-# print("\n\n")
-# print(alist)
-# print("You should see this on the console:  [1, 4, 7, 8, 12]")
-#
-#
-#
-# ###TESTING reverse function
-# print("\nTESTING REVERSE")
-# alist.reverse()
-# print(alist)
-# print("You should see this on the console: [12, 8, 7, 4, 1]")
+###TESTING remove function
+print("\nTESTING REMOVE FUNCTION")
+alist.remove(6)
+alist.remove(0)
+alist.remove(15)
+alist.remove(5)
+print("\n\n")
+print(alist)
+print("You should see this on the console:  [1, 4, 7, 8, 12]")
+
+
+
+###TESTING reverse function
+print("\nTESTING REVERSE")
+alist.reverse()
+print(alist)
+print("You should see this on the console: [12, 8, 7, 4, 1]")
