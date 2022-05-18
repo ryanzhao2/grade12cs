@@ -36,7 +36,8 @@ class Stack:
         length and top (instead of the firstnode)
 
         '''
-        pass
+        self._length = 0
+        self._top = None
 
     def empty(self):
         '''
@@ -45,7 +46,9 @@ class Stack:
         Returns
         True if stack is empty, False if not empty.
         '''
-        pass
+        if self._length == 0:
+            return True
+        return False
 
     def push(self, value):
         '''
@@ -55,7 +58,16 @@ class Stack:
         Parameters
         value is any data type, the value to add to stack
         '''
-        pass
+        newNode = ListNode(value)
+
+        # if list empty new node is first node
+        if (self._top == None):
+            self._top = newNode
+        else:
+            a = self._top
+            self._top = newNode
+            self._top.newlink(a)
+        self._length += 1
 
     def pop(self):
         '''
@@ -66,7 +78,30 @@ class Stack:
         Returns
         The value of the top item. If empty return None.
         '''
-        pass
+        
+        # do nothing if list is empty
+        if (self._top != None):
+
+            # if the list has one node, empty list and decrease length
+            if (self._top.link() == None):
+                self._top = None
+                self._length -= 1
+
+            # otherwise the list has two or more nodes
+            else:
+                    # initialize pointers to previous and current node
+                print(self._top)
+
+                self._top = self._top.link()
+
+
+
+                # advance pointers along the list until current points
+                # to last item in list
+
+                # now previous node points to new last node in list
+                # length is decreased
+                self._length -= 1
 
     def peek(self):
         '''
@@ -75,7 +110,12 @@ class Stack:
         Returns
         The value of the top item. If empty return None
         '''
-        pass
+        currentNode = self._top
+        while currentNode.link() != None:
+            currentNode = currentNode.link()
+            
+        current_value = currentNode.value()
+        return current_value
 
     def __str__(self):
         '''
@@ -86,7 +126,70 @@ class Stack:
         Returns
         String
         '''
-        pass
+        s = ""
+        n = self._top
 
+        # iterate through list one item at a time until last item reached
+        while (n != None):
+            # check if last item in list has been reached
+            # if so, do not place a comma after the item
+            if n.link() != None:
 
+                # check if item is type string. If so, place it in quotations
+                if type(n.value()) == str:
+                    s += "'" + str(n.value()) + "', "
+                else:
+                    s += str(n.value()) + ", "
+            else:
+                # check if item is type string. If so, place it in quotations
+                if type(n.value()) == str:
+                    s += "'" + str(n.value()) + "'"
+                else:
+                    s += str(n.value())
 
+            # advance to next item in list
+            n = n.link()
+
+        return ("[" + s + "]")
+
+a_stack = Stack()
+# a_stack.push('hi')
+# a_stack.push('hello')
+# a_stack.push('hi')
+# a_stack.push('hello')
+# print('\npush\n')
+# print(a_stack)
+#
+# a_stack.pop()
+# a_stack.pop()
+# a_stack.pop()
+# print('\npop\n')
+# print(a_stack)
+#
+#
+# a_stack.push('yes')
+# print(a_stack)
+# print(a_stack.peek())
+#
+# a_stack.push('a')
+# a_stack.push('b')
+# a_stack.pop()
+# a_stack.push('c')
+# a_stack.push('d')
+# a_stack.pop()
+# a_stack.pop()
+# a_stack.pop()
+# a_stack.push('e')
+# a_stack.pop()
+# print(a_stack)
+
+stack1 = Stack()
+stack2 = Stack()
+stack3 = Stack()
+stack1.push('D')
+stack1.push('C')
+stack1.push('B')
+stack1.push('A')
+print(stack1)
+
+sta
