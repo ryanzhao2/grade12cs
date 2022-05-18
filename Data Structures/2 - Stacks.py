@@ -90,7 +90,7 @@ class Stack:
             # otherwise the list has two or more nodes
             else:
                     # initialize pointers to previous and current node
-                print(self._top)
+                # print(self._top)
 
                 self._top = self._top.link()
 
@@ -190,6 +190,14 @@ stack1.push('D')
 stack1.push('C')
 stack1.push('B')
 stack1.push('A')
-print(stack1)
+# print(stack1)
 
-sta
+stack2.push(stack1.pop())
+stack2.push(stack1.pop())
+stack3.push(stack1.pop())
+stack3.push(stack1.pop())
+stack3.push(stack2.pop())
+stack3.push(stack2.pop())
+print(stack1)
+print(stack2)
+print(stack3)
