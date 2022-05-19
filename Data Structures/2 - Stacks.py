@@ -84,17 +84,19 @@ class Stack:
 
             # if the list has one node, empty list and decrease length
             if (self._top.link() == None):
-                a = self._top.value()
+                a = self._top
                 self._top = None
                 self._length -= 1
-                return a
+                return a.value()
+
             # otherwise the list has two or more nodes
             else:
                     # initialize pointers to previous and current node
                 # print(self._top)
-                p = self._top.value()
+                b = self._top
                 self._top = self._top.link()
-                return p
+                self._length -= 1
+                return b.value()
 
 
                 # advance pointers along the list until current points
@@ -102,7 +104,7 @@ class Stack:
 
                 # now previous node points to new last node in list
                 # length is decreased
-            self._length -= 1
+
 
     def peek(self):
         '''
@@ -182,6 +184,7 @@ a_stack = Stack()
 # a_stack.pop()
 # a_stack.push('e')
 # a_stack.pop()
+# print(a_stack)
 
 stack1 = Stack()
 stack2 = Stack()
