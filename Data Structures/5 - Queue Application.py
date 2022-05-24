@@ -1,3 +1,11 @@
+import math
+from Queue import Queue
+'''
+Implementing a radix sort
+Aaron Quesnelle
+June 2020
+
+'''
 '''
 @author: aaronQuesnelle
 2018 for ICS4U
@@ -169,53 +177,51 @@ class Queue:
 
         return ("[" + s + "]")
 
-# my_queue = Queue()
-# my_queue.insert(5)
-# my_queue.insert(10)
-# my_queue.insert(15)
-# my_queue.remove()
-# print(my_queue)
 
-queue1 = Queue()
-queue2 = Queue()
-queue3 = Queue()
-queue1.insert('A')
-queue1.insert('B')
-queue1.insert('C')
-queue1.insert('D')
+def radixSort(aList):
+    # calculate length of longest digit
 
-print('BEFOREHAND')
-print(queue1)
-print(queue2)
-print(queue3,'\n')
+    numberDigits = int(math.log(abs(max(aList)), 10) + 1)
 
-#insert A B C
-queue2.insert(queue1.remove())
-queue2.insert(queue1.remove())
-queue2.insert(queue1.remove())
+    # generate a list of 10 queues to hold numbers during the sort
+    lou = [Queue(),Queue(),Queue(),Queue(),Queue(),Queue(),Queue(),Queue(),Queue(),Queue()]
+    print(lou)
+    # this could be a queue of queues but since it has an absolute length
+    # an array/list is the most appropriate data type
 
-#INSERT D
-queue3.insert(queue1.remove())
+    # lou is a list of buckets (queues)
 
-#INSERT A B
-queue1.insert(queue2.remove())
-queue1.insert(queue2.remove())
+    # start sort
+    # outside loop runs same number of times as there are digits in longest number
+    for digit in range(0, numberDigits):
+        # iterate through the dequeued numbers
+        # this is the list of numbers
+        for item in aList:
+        # extract the particular digit you are sorting on this loop
+            index = int((item / 10 ** digit) % 10)
 
-#INSERT C
-queue3.insert(queue2.remove())
+        # put number in appropriate queue
+            lou[index].insert(item)
 
-#INSERT A
-queue2.insert(queue1.remove())
+        # dequeue the queues
+    aList = []
 
-#INSERT B
-queue3.insert(queue1.remove())
+    # loop through the buckets
+    for q in lou:
+        while q.empty() != True:
+            q.remove()
 
-#INSERT A
-queue3.insert(queue2.remove())
+    # return
+    return aList
 
-print('AFTERHAND')
-print(queue1)
-print(queue2)
-print(queue3)
+# hardcode a list
+numbers = [802, 8001, 102, 3, 7, 98, 143, 43, 129, 29, 45]
+
+result = radixSort(numbers)
+
+print(result)
+
+
+
 
 
