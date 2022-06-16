@@ -35,11 +35,10 @@ class Queue:
         Create an empty queue.
         '''
         self._head = None
-        self._tail = self._head
+        self._tail = None
         # self._head.newlink(self._tail)
         self._length = 0
 
-    pass
 
 
     def empty(self):
@@ -70,16 +69,12 @@ class Queue:
         # if list empty new node is first node
         if (self._head == None):
             self._head = newNode
-        else:
-            # locate last node in list
-            p = self._head
-            while (p.link() != None):
-                p = p.link()
-                self._tail = p.link()
-            p.newlink(newNode)
             self._tail = newNode
-        # increase length by 1
-        self._length += 1
+        else:
+            self._tail.newlink(newNode)
+            self._tail = newNode
+            self._length += 1
+
 
 
 
@@ -101,7 +96,7 @@ class Queue:
             if (self._head.link() == None):
                 a = self._head
                 self._head = None
-                self._tail = self._head
+                self._tail = None
                 self._length -= 1
                 return a.value()
 
@@ -169,12 +164,13 @@ class Queue:
 
         return ("[" + s + "]")
 
-# my_queue = Queue()
-# my_queue.insert(5)
-# my_queue.insert(10)
-# my_queue.insert(15)
-# my_queue.remove()
-# print(my_queue)
+my_queue = Queue()
+my_queue.insert(5)
+my_queue.insert(10)
+my_queue.insert(15)
+my_queue.remove()
+print(my_queue)
+my_queue.peek()
 
 # queue1 = Queue()
 # queue2 = Queue()

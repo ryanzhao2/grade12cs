@@ -63,11 +63,16 @@ class Stack:
         # if list empty new node is first node
         if (self._top == None):
             self._top = newNode
+
+        elif self._top.link != None:
+            self._top.newlink(newNode)
+
         else:
-            a = self._top
-            self._top = newNode
-            self._top.newlink(a)
-        self._length += 1
+            p = self._top
+            while p.link != None:
+                p = p.link()
+            p.newlink(newNode)
+
 
     def pop(self):
         '''
@@ -156,12 +161,13 @@ class Stack:
         return ("[" + s + "]")
 
 a_stack = Stack()
-# a_stack.push('hi')
-# a_stack.push('hello')
-# a_stack.push('hi')
-# a_stack.push('hello')
-# print('\npush\n')
-# print(a_stack)
+a_stack.push('hi')
+a_stack.push('hello')
+a_stack.push('no')
+a_stack.push('bye')
+a_stack.pop()
+print('\npush\n')
+print(a_stack)
 #
 # a_stack.pop()
 # a_stack.pop()
@@ -186,21 +192,21 @@ a_stack = Stack()
 # a_stack.pop()
 # print(a_stack)
 
-stack1 = Stack()
-stack2 = Stack()
-stack3 = Stack()
-stack1.push('D')
-stack1.push('C')
-stack1.push('B')
-stack1.push('A')
+# stack1 = Stack()
+# stack2 = Stack()
+# stack3 = Stack()
+# stack1.push('D')
+# stack1.push('C')
+# stack1.push('B')
+# stack1.push('A')
+# # print(stack1)
+#
+# stack2.push(stack1.pop())
+# stack2.push(stack1.pop())
+# stack3.push(stack1.pop())
+# stack3.push(stack1.pop())
+# stack3.push(stack2.pop())
+# stack3.push(stack2.pop())
 # print(stack1)
-
-stack2.push(stack1.pop())
-stack2.push(stack1.pop())
-stack3.push(stack1.pop())
-stack3.push(stack1.pop())
-stack3.push(stack2.pop())
-stack3.push(stack2.pop())
-print(stack1)
-print(stack2)
-print(stack3)
+# print(stack2)
+# print(stack3)
