@@ -93,6 +93,7 @@ def main():
             time_list.append(cashier.get_queue_time_length())
         minimum_time = time_list.index(min(time_list))
         cashiers[minimum_time].insert(all_customers.remove())
+        print_cashiers(cashiers)
         time_list = []
 
 

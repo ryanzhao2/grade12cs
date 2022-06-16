@@ -1,5 +1,57 @@
 import csv
 
+class Car:
+    def __init__(self, brand, doors):
+        self._brand = brand
+        self._doors = doors
+
+    def brand(self):
+        return self._brand
+
+    def doors(self):
+        return self._doors
+
+class Convertible(Car):
+    def __init__(self, brand, doors, type, price):
+        super().__init__(brand, doors)
+        self._type = type
+
+    def __str__(self):
+        return f'{self._brand} with {self._doors} and is a {self._type}'
+
+    def __repr__(self):
+        return f'Car(brand={self._brand}, doors={self._doors}, type={self._type})'
+
+    def resale_value(self):
+        return
+
+class Sedan(Car):
+    def __init__(self, brand, doors, type, price):
+        super().__init__(brand, doors)
+        self._type = type
+
+    def __str__(self):
+        return f'{self._brand},{self._doors}, {self._type}'
+
+
+class Wagon(Car):
+    def __init__(self, brand, doors, type):
+        super().__init__(brand, doors)
+        self._type = type
+
+    def resale_value(self):
+        return
+
+class Hatchback(Car):
+    def __init__(self, brand, doors, type):
+        super().__init__(brand, doors)
+        self._type = type
+
+    def resale_value(self):
+        return
+
+#main
+
 convertables = []
 sedans = []
 def all_automobiles(file):
@@ -26,37 +78,4 @@ def all_automobiles(file):
             dict[type].append(all)
         #print(convertables)
 
-class Car:
-    def __init__(self, brand, doors):
-        self._brand = brand
-        self._doors = doors
-
-
-class Convertible(Car):
-    def __init__(self, brand, doors, type):
-        super().__init__(brand, doors)
-        self._type = type
-
-    def __str__(self):
-        return f'{self._brand},{self._doors}, {self._type}'
-
-class Sedan(Car):
-    def __init__(self, brand, doors, type):
-        super().__init__(brand, doors)
-        self._type = 'Sedan'
-    def __str__(self):
-        return f'{self._brand},{self._doors}, {self._type}'
-class Wagon(Car):
-    def __init__(self, brand, doors):
-        super().__init__(brand, doors)
-        self._type = 'Wagon'
-
-class Hatchback(Car):
-    def __init__(self, brand, doors):
-        super().__init__(brand, doors)
-        self._type = 'Hatchback'
-
 all_automobiles('Automobile_data.csv')
-
-def main():
-        pass
