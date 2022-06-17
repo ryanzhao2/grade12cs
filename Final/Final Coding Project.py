@@ -1,9 +1,11 @@
 import csv
 
 class Car:
-    def __init__(self, brand, doors):
+    def __init__(self, brand, doors, type, price):
         self._brand = brand
         self._doors = doors
+        self._type = type
+        self._price = price
 
     def brand(self):
         return self._brand
@@ -23,7 +25,7 @@ class Convertible(Car):
         return f'Car(brand={self._brand}, doors={self._doors}, type={self._type})'
 
     def resale_value(self):
-        return
+        return self._price * 0.84
 
 class Sedan(Car):
     def __init__(self, brand, doors, type, price):
@@ -33,6 +35,8 @@ class Sedan(Car):
     def __str__(self):
         return f'{self._brand},{self._doors}, {self._type}'
 
+    def resale_value(self):
+        return self._price * 0.76
 
 class Wagon(Car):
     def __init__(self, brand, doors, type):
@@ -48,7 +52,7 @@ class Hatchback(Car):
         self._type = type
 
     def resale_value(self):
-        return
+        return self._price * 0.80
 
 #main
 
