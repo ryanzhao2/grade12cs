@@ -1,7 +1,8 @@
 import csv
 
-class Car:
+class Automobile:
     def __init__(self, brand, doors, type, price):
+        self._automobile_dict = {}
         self._brand = brand
         self._doors = doors
         self._type = type
@@ -13,51 +14,59 @@ class Car:
     def doors(self):
         return self._doors
 
-class Convertible(Car):
-    def __init__(self, brand, doors, type, price):
-        super().__init__(brand, doors)
-        self._type = type
+    def price(self):
+        return self._price
+
+    def __lt__(self, other):
+        return self._price < other.price()
+
+    def __gt__(self, other):
+        return self._price > other.price()
+
+    def __eq__(self, other):
+        return self._price == other.price()
 
     def __str__(self):
-        return f'{self._brand} with {self._doors} and is a {self._type}'
+        return f'The {self._brand} car with {self._doors} is a {self._type} and costs {self._price}'
 
     def __repr__(self):
         return f'Car(brand={self._brand}, doors={self._doors}, type={self._type})'
 
+    def add_car(self, type, details):
+        self._automobile_dict[type].append(details)
+
+
+
+class Convertible(Automobile):
+
+    def list_convertible(self):
+        return [self._brand, self._doors, self._doors, self._price]
+
     def resale_value(self):
         return self._price * 0.84
 
-class Sedan(Car):
-    def __init__(self, brand, doors, type, price):
-        super().__init__(brand, doors)
-        self._type = type
+class Sedan(Automobile):
+    sedan_list = []
 
-    def __str__(self):
-        return f'{self._brand},{self._doors}, {self._type}'
 
     def resale_value(self):
         return self._price * 0.76
 
-class Wagon(Car):
-    def __init__(self, brand, doors, type):
-        super().__init__(brand, doors)
-        self._type = type
+class Wagon(Automobile):
+    wagon_list = []
 
     def resale_value(self):
         return
 
-class Hatchback(Car):
-    def __init__(self, brand, doors, type):
-        super().__init__(brand, doors)
-        self._type = type
+class Hatchback(Automobile):
+    hatchback_list = []
+
 
     def resale_value(self):
         return self._price * 0.80
 
 #main
 
-convertables = []
-sedans = []
 def all_automobiles(file):
     with open(file, 'r', encoding='utf-8') as automobile_data:
         dict = {}
@@ -70,16 +79,17 @@ def all_automobiles(file):
             price = line[25]
             if type == 'convertible':
                 a_convertible = Convertible(brand, doors, type)
-                convertables.append(a_convertible)
-                print(a_convertible)
             elif type == 'sedan':
                 a_sedan = Sedan(brand, doors, type)
-                sedans.append(a_convertible)
-                print(a_sedan)
+            elif type == 'hatchback':
+                a_hatchback = Sedan(brand, doors, type)
             all = [brand, doors, type, price]
             if type not in dict:
                 dict[type] = []
             dict[type].append(all)
         #print(convertables)
 
-all_automobiles('Automobile_data.csv')
+def main():
+    all_automobiles('Automobile_data.csv')
+
+main()
