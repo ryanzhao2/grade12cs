@@ -161,136 +161,136 @@ main()
 
 
 
-
-import random
-
-
-class Card:
-    _valueDictionary = {'A': 1, 'J': 11, 'Q': 12, 'K': 13}
-
-    def __init__(self, value, suit):
-        self._value = value
-        self._suit = suit
-
-    def value(self):
-
-        if self._value in Card._valueDictionary:
-            return Card._valueDictionary[self._value]
-        else:
-            return self._value
-
-    def suit(self):
-        return self._suit
-
-    def __eq__(self, otherCard):
-
-        return self.value() == otherCard.value() and self.suit() == otherCard.suit()
-
-    def __lt__(self, otherCard):
-
-        return self.value() < otherCard.value()
-
-    def __gt__(self, otherCard):
-
-        return self.value() > otherCard.value()
-
-    def __str__(self):
-        return f'{self._value} of {self._suit}'
-
-    def __repr__(self):
-        return f'class Card(value={self._value}, suit={self._suit})'
-
-
-class Deck:
-    _numCards = 52
-    _cardValues = ['A', 2, 3, 4, 5, 6, 7, 8, 9, 10, 'J', 'Q', 'K']
-    _suits = ['hearts', 'spades', 'clubs', 'diamonds']
-
-    def __init__(self):
-
-        self._cards = self._generateCards()
-
-    @classmethod
-    def _generateCards(cls):
-
-        d = []
-        for s in cls._suits:
-            for v in cls._cardValues:
-                d.append(Card(v, s))
-        return d
-
-    def __getitem__(self, key):
-
-        return self._cards[key]
-
-    def __str__(self):
-        s = ""
-        for c in self._cards:
-            s += c.__str__() + "\n"
-
-        return s
-
-    def shuffle(self):
-
-        for i in range(0, 10):
-            random.shuffle(self._cards)
-
-    def __len__(self):
-        return len(self._cards)
-
-    def empty(self):
-        return len(self._cards) == 0
-
-    def deal(self):
-        return self._cards.pop(0)
-
-
-class Canasta(Deck):
-    def __init__(self):
-        self._num_deck = Deck._generateCards()
-        self._num_deck *= 3
-        for i in range(6):
-            self._num_deck.append(Card(0, 'joker'))
-
-    def __str__(self):
-        return f'{self._num_deck}'
-
-class Euchre(Deck):
-
-    def __init__(self):
-        self._new_deck = []
-        self._num_deck = Euchre._generateCards()
-        for card in self._num_deck:
-
-            if card.value() <= 8 and card.value() >= 2:
-
-                self._new_deck.append(card)
-        for c in self._new_deck:
-            self._num_deck.remove(c)
-
-
-    def __str__(self):
-        return f'{self._num_deck}'
-
-
-
-class BlackJack(Deck):
-
-    def __init__(self):
-
-        self._cards = BlackJack._generateCards() * 8
-        self.shuffle()
-
-    def __str__(self):
-        return f'{self._cards}'
-
-# class test(Deck):
-#     def __init__(self):
-#         self._b = self._cards
+#
+# import random
+#
+#
+# class Card:
+#     _valueDictionary = {'A': 1, 'J': 11, 'Q': 12, 'K': 13}
+#
+#     def __init__(self, value, suit):
+#         self._value = value
+#         self._suit = suit
+#
+#     def value(self):
+#
+#         if self._value in Card._valueDictionary:
+#             return Card._valueDictionary[self._value]
+#         else:
+#             return self._value
+#
+#     def suit(self):
+#         return self._suit
+#
+#     def __eq__(self, otherCard):
+#
+#         return self.value() == otherCard.value() and self.suit() == otherCard.suit()
+#
+#     def __lt__(self, otherCard):
+#
+#         return self.value() < otherCard.value()
+#
+#     def __gt__(self, otherCard):
+#
+#         return self.value() > otherCard.value()
 #
 #     def __str__(self):
-#         return f'{self._b}'
-# print(test())
-print(Canasta())
-# print(Euchre())
-# print(BlackJack())
+#         return f'{self._value} of {self._suit}'
+#
+#     def __repr__(self):
+#         return f'class Card(value={self._value}, suit={self._suit})'
+#
+#
+# class Deck:
+#     _numCards = 52
+#     _cardValues = ['A', 2, 3, 4, 5, 6, 7, 8, 9, 10, 'J', 'Q', 'K']
+#     _suits = ['hearts', 'spades', 'clubs', 'diamonds']
+#
+#     def __init__(self):
+#
+#         self._cards = self._generateCards()
+#
+#     @classmethod
+#     def _generateCards(cls):
+#
+#         d = []
+#         for s in cls._suits:
+#             for v in cls._cardValues:
+#                 d.append(Card(v, s))
+#         return d
+#
+#     def __getitem__(self, key):
+#
+#         return self._cards[key]
+#
+#     def __str__(self):
+#         s = ""
+#         for c in self._cards:
+#             s += c.__str__() + "\n"
+#
+#         return s
+#
+#     def shuffle(self):
+#
+#         for i in range(0, 10):
+#             random.shuffle(self._cards)
+#
+#     def __len__(self):
+#         return len(self._cards)
+#
+#     def empty(self):
+#         return len(self._cards) == 0
+#
+#     def deal(self):
+#         return self._cards.pop(0)
+#
+#
+# class Canasta(Deck):
+#     def __init__(self):
+#         self._num_deck = Deck._generateCards()
+#         self._num_deck *= 3
+#         for i in range(6):
+#             self._num_deck.append(Card(0, 'joker'))
+#
+#     def __str__(self):
+#         return f'{self._num_deck}'
+#
+# class Euchre(Deck):
+#
+#     def __init__(self):
+#         self._new_deck = []
+#         self._num_deck = Euchre._generateCards()
+#         for card in self._num_deck:
+#
+#             if card.value() <= 8 and card.value() >= 2:
+#
+#                 self._new_deck.append(card)
+#         for c in self._new_deck:
+#             self._num_deck.remove(c)
+#
+#
+#     def __str__(self):
+#         return f'{self._num_deck}'
+#
+#
+#
+# class BlackJack(Deck):
+#
+#     def __init__(self):
+#
+#         self._cards = BlackJack._generateCards() * 8
+#         self.shuffle()
+#
+#     def __str__(self):
+#         return f'{self._cards}'
+#
+# # class test(Deck):
+# #     def __init__(self):
+# #         self._b = self._cards
+# #
+# #     def __str__(self):
+# #         return f'{self._b}'
+# # print(test())
+# print(Canasta())
+# # print(Euchre())
+# # print(BlackJack())
