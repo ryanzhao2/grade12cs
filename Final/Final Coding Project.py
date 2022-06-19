@@ -1,28 +1,7 @@
 import csv
-
-
-# parent class that holds a dictionary of the inventory when added from child class
+# parent class for a generic automobile, which holds basic auto attributes,
+# plus a method for storing the auto into an inventory
 class Automobile:
-    def __init__(self, name):
-        self._type_name = name
-        self._automobile_dict = {}
-
-    def type_name(self):
-        return self._type_name
-
-    def __str__(self):
-        return (f' The {self._type_name} category has these cars:\n {self._automobile_dict[self._type_name]} ')
-
-    def __repr__(self):
-        return (f'Garage: name={self._type_name}')
-
-    def print_cars(self, car_type):
-        for car in self._automobile_dict[car_type]:
-            print(car)
-
-
-# holds all the cars in the data set with 4 parameters
-class Inventory:
     def __init__(self, brand, doors, type, price):
         self._brand = brand
         self._doors = doors
@@ -47,55 +26,49 @@ class Inventory:
     def __repr__(self):
         return f'Car(brand={self._brand}, doors={self._doors}, type={self._type})'
 
+    def put_into_inventory(self, type, inventory):
+        if type not in inventory._automobile_dict:
+            inventory._automobile_dict[type] = []
+        inventory._automobile_dict[type].append(self)
+
+# Inventory class holds all the automobiles in the data set with selected parameters
+class Inventory:
+    def __init__(self):
+        self._automobile_dict = {}
+
+    def get_cars_by_type(self, car_type):
+        return self._automobile_dict[car_type]
 
 # 4 child classes each with different requirements to add
 
-# only adds convertibles if their price is less than 25000
+# only adds convertibles if their price is less than $25,000
 class Convertible(Automobile):
 
-    def add_car(self, details):
-        if 'convertible' not in self._automobile_dict:
-            self._automobile_dict['convertible'] = []
-        if details.price() <= 25000 and details.type() == 'convertible':
-            self._automobile_dict['convertible'].append(details)
+    def store_in_inventory(self, inventory):
+        if self.price() <= 25000:
+            self.put_into_inventory(self.type(), inventory)
 
-
-# only adds sedans if their price is less than 15000
+# only adds sedans if their price is less than $15,000
 class Sedan(Automobile):
+    def store_in_inventory(self, inventory):
+        if self.price() <= 25000:
+            self.put_into_inventory(self.type(), inventory)
 
-    def add_car(self, details):
-        if 'sedan' not in self._automobile_dict:
-            self._automobile_dict['sedan'] = []
-        if details.price() <= 15000 and details.type() == 'sedan':
-            self._automobile_dict['sedan'].append(details)
-
-
-# only adds wagon if their price is less than 17000
+# only adds wagon if their price is less than $17,000
 class Wagon(Automobile):
+    def store_in_inventory(self, inventory):
+        if self.price() <= 25000:
+            self.put_into_inventory(self.type(), inventory)
 
-    def add_car(self, details):
-        if 'wagon' not in self._automobile_dict:
-            self._automobile_dict['wagon'] = []
-        if details.price() <= 17000 and details.type() == 'wagon':
-            self._automobile_dict['wagon'].append(details)
-
-
-# only adds hatchback if their price is less than 17000
+# only adds hatchback if their price is less than $17,000
 class Hatchback(Automobile):
+    def store_in_inventory(self, inventory):
+        if self.price() <= 25000:
+            self.put_into_inventory(self.type(), inventory)
 
-    def add_car(self, details):
-        if 'hatchback' not in self._automobile_dict:
-            self._automobile_dict['hatchback'] = []
-        if details.price() <= 17000 and details.type() == 'hatchback':
-            self._automobile_dict['hatchback'].append(details)
-
-
-# main
-
-# reads through the file and adds to a list
-def get_all_automobiles(file):
+# reads through the file and adds the automobile objects into an inventory based on inventory requirements for each type of automobiles
+def save_automobiles_in_inventory(file, inventory):
     with open(file, 'r', encoding='utf-8') as automobile_data:
-        automobile_list = []
         automobile_data.readline()
         reader = csv.reader(automobile_data)
         for line in reader:
@@ -105,33 +78,34 @@ def get_all_automobiles(file):
             if line[25] == '?':
                 line[25] = '100000'
             price = int(line[25])
-            all = Inventory(brand, doors, type, price)
-            automobile_list.append(all)
-        return automobile_list
-
-
-# calls function from child class to add each car in the inventory
-def insert_car(type_car, list_car):
-    for car in list_car:
-        type_car.add_car(car)
-
+            if type == 'hatchback' :
+                auto = Hatchback(brand, doors, type, price)
+            elif type == 'sedan':
+                auto = Sedan(brand, doors, type, price)
+            elif type == 'wagon':
+                auto = Wagon(brand, doors, type, price)
+            elif type == 'convertible':
+                auto = Convertible(brand, doors, type, price)
+            auto.store_in_inventory(inventory)
 
 def main():
-    all_auto_list = get_all_automobiles('Automobile_data.csv')
+    inventory = Inventory()
+    save_automobiles_in_inventory('Automobile_data.csv', inventory)
+    car_type_list = ['convertible', 'sedan', 'hatchback', 'wagon']
 
-    convertible_car = Convertible('convertible')
-    sedan_car = Sedan('sedan')
-    wagon_car = Wagon('wagon')
-    hatchback_car = Hatchback('hatchback')
-    car_type_list = [convertible_car, sedan_car, wagon_car, hatchback_car]
-
+    # display all automobiles in the inventory
     for car_type in car_type_list:
-        insert_car(car_type, all_auto_list)
-
-    for car_type in car_type_list:
-        print(f'-----------{car_type.type_name()}-----------')
-        car_type.print_cars(car_type.type_name())
+        print(f'-----------{car_type}-----------')
+        for car in inventory.get_cars_by_type(car_type):
+            print(car)
         print('\n\n')
+
+    # display all fancy convertibles over $15,000
+    print ('Fancy convertibles:')
+    for car in inventory.get_cars_by_type('convertible'):
+        if car.price() > 15000:
+            print(car)
+    print('\n\n')
 
 
 main()
